@@ -49,32 +49,43 @@ export default function HeroSection() {
           </div>
 
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.1] mb-6">
-            Crafting{' '}
-            <span className="peach-text italic">Divine Art</span>
-            <br />
-            for Every Space
+            Turn Your Faith Into{' '}
+            <span className="peach-text italic">3D Art</span>
           </h1>
 
-          <p className="text-white/50 text-lg leading-relaxed max-w-lg font-body mb-10">
-            We blend centuries of Indian artistic tradition with modern 3D craftsmanship - creating sculptures that carry meaning, tell stories, and last lifetimes.
+          <p className="text-white/55 text-lg leading-relaxed max-w-lg font-body mb-4">
+            Hand-sculpted divine idols, custom portraits, monuments & more — crafted with precision in Chennai and delivered to your door anywhere in the world.
+          </p>
+
+          <p className="text-tss-peach font-body font-semibold text-base mb-8">
+            Starting from ₹699 · 14–21 day delivery · Ships worldwide
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Link href="/shop" id="hero-shop-btn" className="btn-peach">
-              Explore Collection <ArrowRight size={16} />
+              Order Now <ArrowRight size={16} />
             </Link>
-            <Link href="/custom" id="hero-custom-btn" className="btn-white-outline">
-              Custom Order
-            </Link>
+            <a
+              href="https://wa.me/917900060026?text=Hi%2C%20I%27d%20like%20to%20order%20a%20sculpture"
+              target="_blank"
+              rel="noopener noreferrer"
+              id="hero-whatsapp-btn"
+              className="btn-white-outline"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.845L0 24l6.338-1.508A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.955 0-3.79-.53-5.367-1.449l-.385-.228-3.985.948.962-3.91-.252-.4A9.93 9.93 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+              WhatsApp Us
+            </a>
           </div>
 
           {/* Trust pills */}
           <div className="flex flex-wrap gap-3">
             {[
-              { icon: Star, text: '4.9 Rated', sub: '10,000+ Reviews' },
-              { icon: Shield, text: 'Handcrafted', sub: 'Quality Guaranteed' },
-              { icon: Truck, text: 'Free Shipping', sub: 'Orders above ₹999' },
+              { icon: Star, text: '4.9 Rated', sub: '10,000+ Happy Customers' },
+              { icon: Shield, text: 'Hand-painted', sub: 'Museum Quality Finish' },
+              { icon: Truck, text: 'Worldwide Shipping', sub: '50+ Countries' },
             ].map(({ icon: Icon, text, sub }) => (
               <div key={text} className="flex items-center gap-2.5 glass-dark rounded-full px-4 py-2">
                 <Icon size={13} className="text-tss-peach shrink-0" />

@@ -1,6 +1,16 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { CATEGORIES } from '@/lib/data'
+import { CATEGORIES, type Category } from '@/lib/data'
+
+type CategoryWithPrice = {
+  id: Category
+  label: string
+  description: string
+  icon: string
+  image: string
+  count: number
+  startingPrice: string
+}
 
 export default function CategoryNav() {
   return (
@@ -18,7 +28,7 @@ export default function CategoryNav() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CATEGORIES.map((cat, i) => (
+          {(CATEGORIES as CategoryWithPrice[]).map((cat, i) => (
             <Link
               key={cat.id}
               href={`/shop?category=${cat.id}`}
@@ -41,12 +51,15 @@ export default function CategoryNav() {
                     {cat.count}+ Items
                   </span>
                 </div>
-                <h3 className="font-display text-xl font-bold text-white mb-1.5 group-hover:text-tss-peach transition-colors">
+                <h3 className="font-display text-xl font-bold text-white mb-1 group-hover:text-tss-peach transition-colors">
                   {cat.label}
                 </h3>
-                <p className="text-white/50 text-xs font-body leading-relaxed mb-3">{cat.description}</p>
-                <div className="flex items-center gap-1.5 text-tss-peach text-xs font-semibold font-body opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  Explore <ArrowRight size={12} />
+                <p className="text-white/50 text-xs font-body leading-relaxed mb-2">{cat.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-tss-peach font-body font-bold text-sm">from {cat.startingPrice}</span>
+                  <div className="flex items-center gap-1 text-tss-peach text-xs font-semibold font-body opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    Explore <ArrowRight size={12} />
+                  </div>
                 </div>
               </div>
             </Link>

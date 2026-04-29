@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Mail, Phone } from 'lucide-react'
+import { MapPin, Mail, Phone, MessageCircle } from 'lucide-react'
 
 const SocialIcon = ({ path, label, href }: { path: string; label: string; href: string }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
@@ -74,27 +74,35 @@ export default function Footer() {
               <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={160} height={48} className="h-9 w-auto" />
             </Link>
             <p className="text-white/40 text-sm leading-relaxed font-body max-w-xs">
-              We blend centuries of Indian artistic tradition with cutting-edge 3D craftsmanship - creating sculptures that carry meaning and last lifetimes.
+              3D sculptures made by hand in Chennai. Good quality, honest pricing, delivered on time — to your door anywhere in the world.
             </p>
 
             <div className="mt-6 flex flex-col gap-2.5">
-              <a href="mailto:hello@thesculpturestore.in" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Mail size={13} /> hello@thesculpturestore.in
+              <a href="mailto:3dselfiy@gmail.com" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
+                <Mail size={13} /> 3dselfiy@gmail.com
               </a>
-              <a href="tel:+919999999999" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Phone size={13} /> +91 99999 99999
+              <a href="tel:+917900060025" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
+                <Phone size={13} /> +91 79000 60025
+              </a>
+              <a
+                href="https://wa.me/917900060026"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body"
+              >
+                <MessageCircle size={13} /> WhatsApp: +91 79000 60026
               </a>
               <span className="flex items-center gap-2 text-sm text-white/35 font-body">
-                <MapPin size={13} /> Jaipur, Rajasthan, India
+                <MapPin size={13} /> Vanagaram, Chennai, TN 600077
               </span>
             </div>
 
             {/* Social */}
             <div className="mt-6 flex items-center gap-2">
-              <SocialIcon href="https://instagram.com" label="Instagram" path="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM17.5 6.5h.01" />
-              <SocialIcon href="https://youtube.com" label="YouTube" path="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
-              <SocialIcon href="https://facebook.com" label="Facebook" path="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-              <SocialIcon href="https://twitter.com" label="Twitter/X" path="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+              <SocialIcon href="https://instagram.com/3dselfiy" label="Instagram" path="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM17.5 6.5h.01" />
+              <SocialIcon href="https://facebook.com/3dselfiy" label="Facebook" path="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              <SocialIcon href="https://linkedin.com/company/3dselfiy" label="LinkedIn" path="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+              <SocialIcon href="https://wa.me/917900060026" label="WhatsApp" path="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
             </div>
           </div>
 

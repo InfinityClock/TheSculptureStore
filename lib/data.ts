@@ -191,14 +191,16 @@ export const CATEGORIES = [
     icon: '🙏',
     image: '/images/products/ganesha-blessing.png',
     count: 120,
+    startingPrice: '₹1,999',
   },
   {
     id: 'monuments',
-    label: 'Monuments',
+    label: 'Monuments & Tributes',
     description: 'Leaders, legends & iconic monuments in 3D',
     icon: '🏛️',
     image: '/images/products/apj-kalam-monument.png',
     count: 45,
+    startingPrice: '₹4,999',
   },
   {
     id: 'car-dashboard',
@@ -207,14 +209,16 @@ export const CATEGORIES = [
     icon: '🚗',
     image: '/images/products/ganesha-dashboard.png',
     count: 38,
+    startingPrice: '₹699',
   },
   {
     id: 'custom-sculptures',
     label: 'Custom Sculptures',
-    description: 'Your photo, your story - in 3D',
+    description: 'Your photo, your story — in 3D',
     icon: '✨',
     image: '/images/products/custom-portrait.png',
     count: 22,
+    startingPrice: '₹7,999',
   },
 ]
 
@@ -225,7 +229,7 @@ export const TESTIMONIALS = [
     location: 'Mumbai, Maharashtra',
     avatar: 'PS',
     rating: 5,
-    review: 'The Ganesha idol I ordered for my puja room is absolutely stunning. The detail work is breathtaking and the gold finish looks so luxurious. My whole family is in love with it!',
+    review: 'The Ganesha idol for my puja room is absolutely stunning. The detail work is breathtaking and the gold finish looks so luxurious. Miniworks delivered exactly what was promised — on time!',
     product: 'Lord Ganesha - Blessing Pose',
   },
   {
@@ -234,16 +238,16 @@ export const TESTIMONIALS = [
     location: 'Chennai, Tamil Nadu',
     avatar: 'RK',
     rating: 5,
-    review: 'Ordered the Nataraja sculpture for our office reception. Every visitor compliments it. The quality is on par with anything I\'ve seen in high-end galleries. Truly premium.',
+    review: 'Ordered the Nataraja sculpture for our office reception. Every visitor compliments it. The quality is on par with anything I\'ve seen in high-end galleries. Truly premium work from the Chennai studio.',
     product: 'Lord Shiva - Nataraja Dance',
   },
   {
     id: '3',
     name: 'Ananya Nair',
-    location: 'Kochi, Kerala',
+    location: 'Dubai, UAE',
     avatar: 'AN',
     rating: 5,
-    review: 'The custom portrait sculpture of my grandfather was delivered on his 80th birthday. He was moved to tears. The likeness is incredible - you can even see his smile!',
+    review: 'The custom portrait sculpture of my grandfather was delivered all the way to Dubai on his 80th birthday. He was moved to tears. The likeness is incredible — you can even see his smile!',
     product: 'Custom Portrait Sculpture',
   },
   {
@@ -252,7 +256,7 @@ export const TESTIMONIALS = [
     location: 'Ahmedabad, Gujarat',
     avatar: 'VP',
     rating: 5,
-    review: 'Bought 6 car dashboard dolls as gifts for my team. Everyone loved them. The packaging was gorgeous and the quality exceeded all expectations. Will order again!',
+    review: 'Bought 6 car dashboard dolls as Diwali gifts for my team. Everyone loved them. The packaging was gorgeous and the quality exceeded all expectations. Will definitely order again!',
     product: 'Ganesha - Car Dashboard Mini',
   },
   {
@@ -261,7 +265,7 @@ export const TESTIMONIALS = [
     location: 'Hyderabad, Telangana',
     avatar: 'SR',
     rating: 5,
-    review: 'The Kalam monument is a conversation starter at our office. The bronze finish is so realistic. Delivery was fast and the packing was absolutely premium.',
+    review: 'The Kalam monument is a conversation starter at our office. The bronze finish is so realistic. Jagadesh and his team went above and beyond — fast delivery, premium packing.',
     product: 'APJ Abdul Kalam - Tribute Monument',
   },
 ]

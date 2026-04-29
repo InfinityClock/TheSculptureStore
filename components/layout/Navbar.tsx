@@ -17,8 +17,8 @@ const NAV_LINKS = [
       { label: 'Custom Sculptures', href: '/shop?category=custom-sculptures' },
     ],
   },
-  { label: 'Collections', href: '/collections' },
-  { label: 'Custom Order', href: '/custom' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Custom Order', href: '/shop?category=custom-sculptures' },
   { label: 'Our Story', href: '/#story' },
 ]
 
@@ -122,7 +122,7 @@ export default function Navbar() {
               id="navbar-shop-cta"
               className="hidden md:flex btn-peach py-2 px-5 text-xs rounded-lg"
             >
-              Shop Now
+              Order Now
             </Link>
 
             <button

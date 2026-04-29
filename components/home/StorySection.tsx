@@ -14,7 +14,7 @@ export default function StorySection() {
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-tss-peach/20 bg-white/5 backdrop-blur-sm mb-8">
               <span className="text-tss-peach"><Box size={14} /></span>
-              <span className="text-tss-peach text-[10px] font-bold tracking-widest uppercase font-body">ESTABLISHED 2018 · JAIPUR, INDIA</span>
+              <span className="text-tss-peach text-[10px] font-bold tracking-widest uppercase font-body">MINIWORKS DESIGN · CHENNAI, INDIA</span>
             </div>
 
             {/* Headline */}
@@ -25,7 +25,7 @@ export default function StorySection() {
 
             {/* Description */}
             <p className="text-white/60 font-body text-base sm:text-lg leading-relaxed max-w-lg mb-10">
-              Ancient art belongs in your home. We recreate divine idols and monuments with modern precision - as real, breathtaking 3D sculptures you can worship, gift, and admire.
+              We started in Chennai with one belief: divine art belongs in every home. Today, Miniworks Design ships hand-crafted 3D sculptures to 50+ countries — blending precision technology with the soul of Indian craftsmanship.
             </p>
 
             {/* Buttons */}
@@ -73,7 +73,7 @@ export default function StorySection() {
               <div>
                 <p className="text-white/60 text-[10px] font-bold tracking-widest uppercase font-body mb-1">FOUNDER & CEO</p>
                 <p className="text-white font-display font-bold text-xl mb-0.5">Jagadesh Koteesvaran</p>
-                <p className="text-white/50 text-xs font-body">3D Artist & Entrepreneur · Jaipur</p>
+                <p className="text-white/50 text-xs font-body">Founder & 3D Artist · Chennai, Tamil Nadu</p>
               </div>
             </div>
           </div>

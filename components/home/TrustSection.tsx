@@ -1,12 +1,12 @@
 import { Users, Gem, MapPin, Truck, RefreshCw, Headphones } from 'lucide-react'
 
 const TRUST_ITEMS = [
-  { icon: Users, number: '10,000+', label: 'Happy Customers', sub: 'Across 15+ Indian states' },
-  { icon: Gem, number: '500+', label: 'Unique Designs', sub: 'Handcrafted masterpieces' },
-  { icon: MapPin, number: '100%', label: 'Made in India', sub: 'Proudly Indian craftsmanship' },
-  { icon: Truck, number: 'Free', label: 'Pan India Shipping', sub: 'On orders above ₹999' },
-  { icon: RefreshCw, number: '7-Day', label: 'Easy Returns', sub: 'No questions asked' },
-  { icon: Headphones, number: '24/7', label: 'Customer Support', sub: 'Always here for you' },
+  { icon: Users, number: '10,000+', label: 'Happy Customers', sub: 'Across India & worldwide' },
+  { icon: Gem, number: 'Hand-painted', label: 'Museum Finish', sub: 'Food-safe resin, full colour' },
+  { icon: MapPin, number: 'Chennai', label: 'Made in India', sub: 'Miniworks Design Studio' },
+  { icon: Truck, number: '50+', label: 'Countries Served', sub: 'Worldwide shipping available' },
+  { icon: RefreshCw, number: '14–21', label: 'Day Turnaround', sub: 'From order to your door' },
+  { icon: Headphones, number: '24hr', label: 'Response Time', sub: 'WhatsApp & email support' },
 ]
 
 export default function TrustSection() {
@@ -26,7 +26,7 @@ export default function TrustSection() {
             The <span className="peach-text">TSS</span> Promise
           </h2>
           <p className="text-white/40 mt-4 max-w-xl mx-auto font-body leading-relaxed text-[15px]">
-            Every order is backed by our commitment to quality, authenticity, and your complete satisfaction.
+            Good quality, honest pricing, delivered on time — that's the Miniworks promise on every order.
           </p>
         </div>
 
