@@ -2,10 +2,10 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 const COLLECTIONS = [
-  { id: 'divine', label: 'Divine Deities', description: 'Ganesha · Shiva · Lakshmi · Durga · Krishna', image: 'https://images.unsplash.com/photo-1604881991720-f91add269bed?w=800&q=80', href: '/shop?category=divine-idols' },
-  { id: 'leaders', label: 'National Leaders', description: 'Gandhi · Kalam · Ambedkar · Subhash', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', href: '/shop?category=monuments' },
-  { id: 'temples', label: 'Temple Architecture', description: 'Gopurams · Pillars · Shrines · Décor', image: 'https://images.unsplash.com/photo-1609609861234-fd1a3c0e0e8e?w=800&q=80', href: '/shop?category=temple-decor' },
-  { id: 'home-decor', label: 'Home & Office Décor', description: 'Minimal · Contemporary · Spiritual', image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&q=80', href: '/shop?category=home-decor' },
+  { id: 'divine', label: 'Divine Deities', description: 'Ganesha · Shiva · Lakshmi · Durga · Krishna', image: '/images/collections/divine-deities.png', href: '/shop?category=divine-idols' },
+  { id: 'leaders', label: 'National Leaders', description: 'Gandhi · Kalam · Ambedkar · Subhash', image: '/images/collections/national-leaders.png', href: '/shop?category=monuments' },
+  { id: 'temples', label: 'Temple Architecture', description: 'Gopurams · Pillars · Shrines · Décor', image: '/images/collections/temple-architecture.png', href: '/shop?category=temple-decor' },
+  { id: 'home-decor', label: 'Home & Office Décor', description: 'Minimal · Contemporary · Spiritual', image: '/images/collections/home-office-decor.png', href: '/shop?category=home-decor' },
 ]
 
 function CollectionCard({ c, tall, wide }: { c: typeof COLLECTIONS[0]; tall?: boolean; wide?: boolean }) {
