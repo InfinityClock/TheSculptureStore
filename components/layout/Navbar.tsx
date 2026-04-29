@@ -8,28 +8,27 @@ import { clsx } from 'clsx'
 
 const NAV_LINKS = [
   {
-    label: 'Shop',
+    label: 'Products',
     href: '/shop',
     children: [
       { label: 'Divine Idols', href: '/shop?category=divine-idols' },
-      { label: 'Monuments', href: '/shop?category=monuments' },
+      { label: 'Monuments & Tributes', href: '/shop?category=monuments' },
       { label: 'Car Dashboard Dolls', href: '/shop?category=car-dashboard' },
       { label: 'Custom Sculptures', href: '/shop?category=custom-sculptures' },
     ],
   },
   { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Custom Order', href: '/shop?category=custom-sculptures' },
   { label: 'Our Story', href: '/#story' },
+  { label: 'Contact', href: 'https://wa.me/917900060026', external: true },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [cartCount] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
+    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -38,27 +37,27 @@ export default function Navbar() {
     <>
       <header
         className={clsx(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-tss-blue-deep/95 backdrop-blur-2xl shadow-tss py-3'
+            ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-100 py-3'
             : 'bg-transparent py-5'
         )}
       >
         <div className="container-wide flex items-center justify-between">
-          {/* ── Logo ── */}
+          {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src="/logo/logo-white.png"
+              src={scrolled ? '/logo/logo-blue.png' : '/logo/logo-white.png'}
               alt="The Sculpture Store"
-              width={160}
-              height={48}
-              className="h-9 w-auto object-contain"
+              width={150}
+              height={44}
+              className="h-8 w-auto object-contain transition-opacity duration-300"
               priority
             />
           </Link>
 
-          {/* ── Desktop Nav ── */}
-          <nav className="hidden lg:flex items-center gap-8">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-7">
             {NAV_LINKS.map((link) => (
               <div
                 key={link.label}
@@ -66,22 +65,41 @@ export default function Navbar() {
                 onMouseEnter={() => setActiveDropdown(link.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-1 text-white/80 hover:text-white transition-colors font-body text-sm font-medium"
-                >
-                  {link.label}
-                  {link.children && <ChevronDown size={13} className="opacity-50" />}
-                </Link>
+                {'external' in link && link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={clsx(
+                      'flex items-center gap-1 font-body text-sm font-medium transition-colors',
+                      scrolled ? 'text-gray-600 hover:text-tss-blue' : 'text-white/80 hover:text-white'
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={clsx(
+                      'flex items-center gap-1 font-body text-sm font-medium transition-colors',
+                      scrolled ? 'text-gray-600 hover:text-tss-blue' : 'text-white/80 hover:text-white'
+                    )}
+                  >
+                    {link.label}
+                    {'children' in link && link.children && (
+                      <ChevronDown size={13} className="opacity-50" />
+                    )}
+                  </Link>
+                )}
 
-                {link.children && activeDropdown === link.label && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-tss-blue-deep border border-white/10 rounded-2xl shadow-tss-lg overflow-hidden">
+                {'children' in link && link.children && activeDropdown === link.label && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden">
                     <div className="py-2">
                       {link.children.map((child) => (
                         <Link
                           key={child.label}
                           href={child.href}
-                          className="block px-4 py-2.5 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors font-body"
+                          className="block px-4 py-2.5 text-sm text-gray-600 hover:text-tss-blue hover:bg-gray-50 transition-colors font-body"
                         >
                           {child.label}
                         </Link>
@@ -93,43 +111,43 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* ── Actions ── */}
+          {/* Actions */}
           <div className="flex items-center gap-2">
             <button
-              id="navbar-search-btn"
               aria-label="Search"
-              className="hidden sm:flex w-9 h-9 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/8 transition-colors"
+              className={clsx(
+                'hidden sm:flex w-9 h-9 items-center justify-center rounded-full transition-colors',
+                scrolled ? 'text-gray-500 hover:text-tss-blue hover:bg-gray-100' : 'text-white/70 hover:text-white hover:bg-white/10'
+              )}
             >
               <Search size={17} />
             </button>
 
             <Link
               href="/cart"
-              id="navbar-cart-btn"
               aria-label="Cart"
-              className="relative flex w-9 h-9 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/8 transition-colors"
+              className={clsx(
+                'relative flex w-9 h-9 items-center justify-center rounded-full transition-colors',
+                scrolled ? 'text-gray-500 hover:text-tss-blue hover:bg-gray-100' : 'text-white/70 hover:text-white hover:bg-white/10'
+              )}
             >
               <ShoppingCart size={17} />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-4 h-4 bg-tss-peach text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
             </Link>
 
             <Link
               href="/shop"
-              id="navbar-shop-cta"
-              className="hidden md:flex btn-peach py-2 px-5 text-xs rounded-lg"
+              className="hidden md:flex btn-peach py-2 px-5 text-xs"
             >
               Order Now
             </Link>
 
             <button
-              id="navbar-mobile-menu-btn"
               aria-label="Menu"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex w-9 h-9 items-center justify-center text-white/70 hover:text-white"
+              className={clsx(
+                'lg:hidden flex w-9 h-9 items-center justify-center rounded-full transition-colors',
+                scrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white/80 hover:bg-white/10'
+              )}
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -137,32 +155,43 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ── Mobile Menu ── */}
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-tss-blue-deep/98 backdrop-blur-xl flex flex-col pt-20 px-6 overflow-y-auto">
-          {/* Logo in mobile menu */}
-          <div className="mb-8">
-            <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={140} height={42} className="h-8 w-auto" />
+        <div className="fixed inset-0 z-40 bg-white flex flex-col pt-20 px-6 overflow-y-auto">
+          <div className="mb-6">
+            <Image src="/logo/logo-blue.png" alt="The Sculpture Store" width={140} height={40} className="h-8 w-auto" />
           </div>
 
-          <nav className="flex flex-col">
+          <nav className="flex flex-col divide-y divide-gray-100">
             {NAV_LINKS.map((link) => (
-              <div key={link.label} className="border-b border-white/8">
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-4 text-xl font-display text-white hover:text-tss-peach transition-colors"
-                >
-                  {link.label}
-                </Link>
-                {link.children && (
-                  <div className="pl-4 pb-2 grid grid-cols-2 gap-1">
+              <div key={link.label}>
+                {'external' in link && link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-4 text-lg font-display font-semibold text-tss-blue hover:text-tss-peach transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-4 text-lg font-display font-semibold text-tss-blue hover:text-tss-peach transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )}
+                {'children' in link && link.children && (
+                  <div className="pl-4 pb-3 grid grid-cols-2 gap-1">
                     {link.children.map((child) => (
                       <Link
                         key={child.label}
                         href={child.href}
                         onClick={() => setMobileOpen(false)}
-                        className="text-sm text-white/45 hover:text-tss-peach py-1 transition-colors font-body"
+                        className="text-sm text-gray-500 hover:text-tss-peach py-1 transition-colors font-body"
                       >
                         {child.label}
                       </Link>
@@ -174,18 +203,23 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-8 flex flex-col gap-3">
-            <Link href="/shop" onClick={() => setMobileOpen(false)} className="btn-peach justify-center text-sm">
-              Explore All Sculptures
+            <Link href="/shop" onClick={() => setMobileOpen(false)} className="btn-peach justify-center">
+              Order Now
             </Link>
-            <Link href="/custom" onClick={() => setMobileOpen(false)} className="btn-white-outline justify-center text-sm">
-              Place Custom Order
-            </Link>
+            <a
+              href="https://wa.me/917900060026?text=Hi%2C%20I%27d%20like%20to%20order%20a%20sculpture"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="btn-blue-outline justify-center"
+            >
+              WhatsApp Us
+            </a>
           </div>
 
-          <div className="mt-auto pb-6 pt-8 flex items-center gap-6 text-white/30 text-xs font-body">
-            <span>📍 Made in India</span>
-            <span>🚚 Free Shipping ₹999+</span>
-            <span>⭐ 4.9 Rated</span>
+          <div className="mt-auto pb-8 pt-8 text-sm text-gray-400 font-body space-y-1">
+            <p>📍 Vanagaram, Chennai, TN 600077</p>
+            <p>📞 +91 79000 60025 · 🚚 Ships to 50+ countries</p>
           </div>
         </div>
       )}

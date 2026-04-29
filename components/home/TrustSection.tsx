@@ -1,53 +1,56 @@
-import { Users, Gem, MapPin, Truck, RefreshCw, Headphones } from 'lucide-react'
+import { Users, Paintbrush, MapPin, Globe, Clock, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
 
 const TRUST_ITEMS = [
   { icon: Users, number: '10,000+', label: 'Happy Customers', sub: 'Across India & worldwide' },
-  { icon: Gem, number: 'Hand-painted', label: 'Museum Finish', sub: 'Food-safe resin, full colour' },
+  { icon: Paintbrush, number: 'Hand-painted', label: 'Museum Finish', sub: 'Food-safe resin, full colour' },
   { icon: MapPin, number: 'Chennai', label: 'Made in India', sub: 'Miniworks Design Studio' },
-  { icon: Truck, number: '50+', label: 'Countries Served', sub: 'Worldwide shipping available' },
-  { icon: RefreshCw, number: '14–21', label: 'Day Turnaround', sub: 'From order to your door' },
-  { icon: Headphones, number: '24hr', label: 'Response Time', sub: 'WhatsApp & email support' },
+  { icon: Globe, number: '50+', label: 'Countries Served', sub: 'Worldwide shipping available' },
+  { icon: Clock, number: '14–21', label: 'Day Turnaround', sub: 'From order to your door' },
+  { icon: MessageCircle, number: '24hr', label: 'Response Time', sub: 'WhatsApp & email support' },
 ]
 
 export default function TrustSection() {
   return (
-    <section id="trust" className="section-padding relative overflow-hidden" style={{ background: '#132A40' }}>
-      {/* Dot grid */}
-      <div className="absolute inset-0 opacity-[0.04]"
-        style={{ backgroundImage: 'radial-gradient(circle, #F4956A 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-[0.06]"
-        style={{ background: 'radial-gradient(circle, #F4956A 0%, transparent 70%)' }} />
-
-      <div className="container-wide relative z-10">
-        <div className="text-center mb-14">
+    <section id="trust" className="section-padding bg-white border-t border-gray-100">
+      <div className="container-wide">
+        <div className="text-center mb-12">
           <span className="section-label">Why Choose Us</span>
           <div className="divider-peach mx-auto" />
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-2">
-            The <span className="peach-text">TSS</span> Promise
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-tss-blue mt-2">
+            The Miniworks Promise
           </h2>
-          <p className="text-white/40 mt-4 max-w-xl mx-auto font-body leading-relaxed text-[15px]">
-            Good quality, honest pricing, delivered on time — that's the Miniworks promise on every order.
+          <p className="text-gray-500 mt-3 max-w-lg mx-auto font-body leading-relaxed text-[15px]">
+            Good quality, honest pricing, delivered on time — on every single order.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {TRUST_ITEMS.map(({ icon: Icon, number, label, sub }) => (
-            <div key={label}
-              className="group flex flex-col items-center text-center p-5 lg:p-6 rounded-2xl border border-white/8 hover:border-tss-peach/30 bg-white/3 hover:bg-white/5 transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 rounded-xl bg-tss-peach/10 border border-tss-peach/20 flex items-center justify-center mb-4 group-hover:bg-tss-peach/20 transition-colors">
+            <div
+              key={label}
+              className="group flex flex-col items-center text-center p-5 rounded-2xl border border-gray-100 bg-gray-50 hover:border-tss-peach/30 hover:bg-white transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="w-11 h-11 rounded-xl bg-tss-peach/10 flex items-center justify-center mb-3 group-hover:bg-tss-peach/20 transition-colors">
                 <Icon size={20} className="text-tss-peach" />
               </div>
-              <div className="font-display text-2xl font-bold text-tss-peach mb-1">{number}</div>
-              <div className="font-body font-semibold text-white text-sm mb-1">{label}</div>
-              <div className="font-body text-white/35 text-xs leading-relaxed">{sub}</div>
+              <div className="font-display text-lg font-bold text-tss-blue mb-0.5">{number}</div>
+              <div className="font-body font-semibold text-tss-blue text-xs mb-1">{label}</div>
+              <div className="font-body text-gray-400 text-[11px] leading-relaxed">{sub}</div>
             </div>
           ))}
         </div>
 
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-2.5">
           {['🔒 Secure Checkout', '🎁 Gift Wrapping', '⚡ Express Delivery', '🇮🇳 GST Invoice', '💳 EMI Available', '📦 Tamper-proof Packaging'].map(badge => (
-            <div key={badge} className="glass-dark rounded-full px-4 py-2 text-sm text-white/50 font-body">{badge}</div>
+            <span key={badge} className="bg-gray-50 border border-gray-200 rounded-full px-4 py-2 text-xs text-gray-500 font-body">{badge}</span>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link href="/shop" className="btn-peach">
+            Shop Now
+          </Link>
         </div>
       </div>
     </section>

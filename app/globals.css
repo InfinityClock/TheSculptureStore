@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,23 +6,22 @@
 
 /* ─── TSS Brand Tokens ───────────────────────────────────── */
 :root {
-  /* Primary */
   --tss-blue: #1D3D5C;
   --tss-blue-light: #254D73;
   --tss-blue-dark: #132A40;
   --tss-blue-deep: #0D1E2E;
-
-  /* Accent */
   --peach: #F4956A;
   --peach-light: #F7AC86;
   --peach-dark: #E07A4D;
-
-  /* Neutrals */
+  --gold: #C9A227;
   --cream: #FDF8F4;
   --cream-dark: #F5EDE5;
-  --stone: #8C7B6E;
-  --text: #1A1A1A;
+  --stone: #6B7280;
+  --text: #111827;
   --text-muted: #6B7280;
+  --bg: #FFFFFF;
+  --bg-soft: #F8F9FA;
+  --border: #E5E7EB;
 }
 
 /* ─── Base ──────────────────────────────────────────────── */
@@ -30,13 +29,17 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--cream);
+  background-color: #ffffff;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; }
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', system-ui, sans-serif;
+  line-height: 1.2;
+  color: var(--tss-blue);
+}
 
 /* ─── Scrollbar ─────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
@@ -45,12 +48,20 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
 
 /* ─── Utility Layer ─────────────────────────────────────── */
 @layer utilities {
-  .font-display { font-family: 'Playfair Display', Georgia, serif; }
+  .font-display { font-family: 'Poppins', system-ui, sans-serif; }
   .font-body    { font-family: 'Inter', system-ui, sans-serif; }
 
   /* Gradient text - peach */
   .peach-text {
     background: linear-gradient(135deg, #F4956A, #F7AC86);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold gradient text */
+  .gold-text {
+    background: linear-gradient(135deg, #C9A227, #D4B44A);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -66,17 +77,36 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
 
   /* Glassmorphism - light */
   .glass-light {
-    background: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.6);
   }
 
   /* Spacing helpers */
   .section-padding  { padding-top: 5rem; padding-bottom: 5rem; }
-  .container-wide   { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+  .container-wide   { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
-  /* ── Primary CTA button (peach) ── */
+  /* ── Section label (small caps above heading) ── */
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--peach);
+  }
+
+  /* ── Divider ── */
+  .divider-peach {
+    height: 3px;
+    width: 40px;
+    background: linear-gradient(90deg, #F4956A, #F7AC86);
+    border-radius: 2px;
+    margin: 0.6rem 0;
+  }
+
+  /* ── Primary CTA button (peach/orange) ── */
   .btn-peach {
     display: inline-flex;
     align-items: center;
@@ -84,111 +114,24 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
     background: linear-gradient(135deg, #F4956A, #E07A4D);
     color: #fff;
     font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    transition: all 0.25s ease;
     cursor: pointer;
     border: none;
-    letter-spacing: 0.02em;
-    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
     white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(244,149,106,0.30);
   }
   .btn-peach:hover {
     background: linear-gradient(135deg, #E07A4D, #F4956A);
-    box-shadow: 0 8px 32px rgba(244,149,106,0.45);
-    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(244,149,106,0.45);
+    transform: translateY(-1px);
   }
 
-  /* ── Secondary CTA button (outline blue) ── */
-  .btn-blue-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    color: var(--tss-blue);
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    border: 1.5px solid var(--tss-blue);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    letter-spacing: 0.02em;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  .btn-blue-outline:hover {
-    background: rgba(29,61,92,0.06);
-    box-shadow: 0 4px 20px rgba(29,61,92,0.15);
-    transform: translateY(-2px);
-  }
-
-  /* ── White outline (for dark backgrounds) ── */
-  .btn-white-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    border: 1.5px solid rgba(255,255,255,0.25);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  .btn-white-outline:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.5);
-    transform: translateY(-2px);
-  }
-
-  /* ── Product card ── */
-  .product-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 16px rgba(29,61,92,0.07);
-    border: 1px solid rgba(29,61,92,0.06);
-  }
-  .product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(29,61,92,0.14);
-  }
-
-  /* ── Section label ── */
-  .section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--peach);
-  }
-
-  /* ── Divider ── */
-  .divider-peach {
-    height: 2px;
-    width: 48px;
-    background: linear-gradient(90deg, #F4956A, #F7AC86);
-    border-radius: 1px;
-    margin: 0.75rem 0;
-  }
-
-  /* ── Image zoom wrapper ── */
-  .img-zoom { overflow: hidden; }
-  .img-zoom img { transition: transform 0.65s cubic-bezier(0.4,0,0.2,1); }
-  .img-zoom:hover img { transform: scale(1.07); }
-  .img-zoom-wrap { overflow: hidden; }
-  .img-zoom-wrap img { transition: transform 0.65s cubic-bezier(0.4,0,0.2,1); }
-  .img-zoom-wrap:hover img { transform: scale(1.07); }
-
-  /* ── Gold CTA button (alias for btn-peach on gold-themed pages) ── */
+  /* ── Gold CTA button ── */
   .btn-gold {
     display: inline-flex;
     align-items: center;
@@ -196,20 +139,20 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
     background: linear-gradient(135deg, #C9A227, #A8841C);
     color: #fff;
     font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    transition: all 0.25s ease;
     cursor: pointer;
     border: none;
-    letter-spacing: 0.02em;
-    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
     white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(201,162,39,0.28);
   }
   .btn-gold:hover {
-    background: linear-gradient(135deg, #A8841C, #C9A227);
-    box-shadow: 0 8px 32px rgba(201,162,39,0.40);
-    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(201,162,39,0.42);
+    transform: translateY(-1px);
   }
 
   /* ── Gold outline button ── */
@@ -220,41 +163,100 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
     background: transparent;
     color: #1D3D5C;
     font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
     border: 1.5px solid #C9A227;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     cursor: pointer;
-    letter-spacing: 0.02em;
-    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
     white-space: nowrap;
   }
   .btn-outline-gold:hover {
-    background: rgba(201,162,39,0.08);
-    box-shadow: 0 4px 20px rgba(201,162,39,0.20);
-    transform: translateY(-2px);
+    background: rgba(201,162,39,0.07);
+    transform: translateY(-1px);
   }
 
-  /* ── Gold gradient text ── */
-  .gold-text {
-    background: linear-gradient(135deg, #C9A227, #D4B44A);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* ── Blue outline button ── */
+  .btn-blue-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--tss-blue);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--tss-blue);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    font-size: 0.875rem;
+    white-space: nowrap;
   }
+  .btn-blue-outline:hover {
+    background: rgba(29,61,92,0.05);
+    transform: translateY(-1px);
+  }
+
+  /* ── White outline (for dark backgrounds) ── */
+  .btn-white-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255,255,255,0.28);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+  .btn-white-outline:hover {
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.55);
+    transform: translateY(-1px);
+  }
+
+  /* ── Product card ── */
+  .product-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  }
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(29,61,92,0.12);
+  }
+
+  /* ── Image zoom wrapper ── */
+  .img-zoom { overflow: hidden; }
+  .img-zoom img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .img-zoom:hover img { transform: scale(1.06); }
+  .img-zoom-wrap { overflow: hidden; }
+  .img-zoom-wrap img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .img-zoom-wrap:hover img { transform: scale(1.06); }
 
   /* ── Admin sidebar ── */
   .admin-sidebar { background: var(--tss-blue-deep); }
 }
 
 /* ─── Animations ─────────────────────────────────────────── */
-@keyframes fadeUp   { from { opacity:0; transform: translateY(28px); } to { opacity:1; transform: translateY(0); } }
+@keyframes fadeUp   { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
 @keyframes float    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @keyframes marquee  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
 
 .animate-float   { animation: float 6s ease-in-out infinite; }
-.animate-marquee { animation: marquee 22s linear infinite; }
+.animate-marquee { animation: marquee 28s linear infinite; }
 
 /* ─── Mobile sticky CTA ─────────────────────────────────── */
 @media (max-width: 768px) {
@@ -264,6 +266,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
     z-index: 40;
     padding: 1rem;
     background: white;
-    box-shadow: 0 -4px 24px rgba(29,61,92,0.12);
+    box-shadow: 0 -4px 20px rgba(29,61,92,0.10);
   }
 }

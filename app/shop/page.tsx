@@ -11,7 +11,7 @@ import Footer from '@/components/layout/Footer'
 const CATEGORY_OPTIONS: { value: Category | 'all'; label: string }[] = [
   { value: 'all', label: 'All Products' },
   { value: 'divine-idols', label: 'Divine Idols' },
-  { value: 'monuments', label: 'Monuments' },
+  { value: 'monuments', label: 'Monuments & Tributes' },
   { value: 'car-dashboard', label: 'Car Dashboard Dolls' },
   { value: 'custom-sculptures', label: 'Custom Sculptures' },
   { value: 'temple-decor', label: 'Temple Décor' },
@@ -29,25 +29,20 @@ const SORT_OPTIONS = [
 function ShopProductCard({ product }: { product: Product }) {
   const [wishlisted, setWishlisted] = useState(false)
   const [added, setAdded] = useState(false)
-
-  const handleAdd = () => {
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
-  }
+  const handleAdd = () => { setAdded(true); setTimeout(() => setAdded(false), 2000) }
 
   return (
-    <div className="product-card group flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100">
-      <div className="relative img-zoom-wrap overflow-hidden aspect-square">
+    <div className="product-card group flex flex-col bg-white">
+      <div className="relative img-zoom-wrap overflow-hidden aspect-square bg-gray-50 rounded-t-2xl">
         <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-navy/10 opacity-0 group-hover:opacity-100 transition-opacity" />
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.badge && (
-            <span className="bg-gold text-navy text-[10px] font-bold font-body px-2 py-0.5 rounded-full uppercase">
+            <span className="bg-tss-peach text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide font-body">
               {product.badge}
             </span>
           )}
           {product.discount > 0 && (
-            <span className="bg-navy text-white text-[10px] font-semibold font-body px-2 py-0.5 rounded-full">
+            <span className="bg-tss-blue text-white text-[10px] font-semibold px-2.5 py-0.5 rounded-full font-body">
               -{product.discount}%
             </span>
           )}
@@ -55,7 +50,7 @@ function ShopProductCard({ product }: { product: Product }) {
         <button
           aria-label="Wishlist"
           onClick={() => setWishlisted(!wishlisted)}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-sm"
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center hover:scale-110 transition-transform"
         >
           <Heart size={13} className={wishlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'} />
         </button>
@@ -63,8 +58,8 @@ function ShopProductCard({ product }: { product: Product }) {
           <button
             onClick={handleAdd}
             className={clsx(
-              'w-full py-2 rounded-lg text-xs font-semibold font-body flex items-center justify-center gap-1.5 transition-all',
-              added ? 'bg-green-500 text-white' : 'bg-white text-navy hover:bg-gold'
+              'w-full py-2 rounded-xl text-xs font-semibold font-body flex items-center justify-center gap-1.5 transition-all',
+              added ? 'bg-green-500 text-white' : 'bg-white text-tss-blue hover:bg-tss-peach hover:text-white'
             )}
           >
             <ShoppingCart size={13} />
@@ -73,28 +68,31 @@ function ShopProductCard({ product }: { product: Product }) {
         </div>
       </div>
       <div className="p-4 flex flex-col flex-1">
-        <span className="text-[10px] uppercase tracking-widest text-gold/70 font-body font-semibold mb-1">
+        <span className="text-[10px] uppercase tracking-widest text-tss-peach font-body font-semibold mb-1">
           {product.material.split(',')[0]}
         </span>
-        <Link href={`/product/${product.slug}`} className="font-display text-navy font-semibold text-sm leading-snug hover:text-gold transition-colors mb-2 line-clamp-2">
+        <Link
+          href={`/product/${product.slug}`}
+          className="font-display text-tss-blue font-semibold text-sm leading-snug hover:text-tss-peach transition-colors mb-2 line-clamp-2"
+        >
           {product.name}
         </Link>
-        <div className="flex items-center gap-1 mb-3">
+        <div className="flex items-center gap-0.5 mb-3">
           {[...Array(5)].map((_, s) => (
-            <Star key={s} size={10} className={s < Math.round(product.rating) ? 'fill-gold text-gold' : 'fill-gray-200 text-gray-200'} />
+            <Star key={s} size={10} className={s < Math.round(product.rating) ? 'fill-tss-peach text-tss-peach' : 'fill-gray-200 text-gray-200'} />
           ))}
-          <span className="text-[10px] text-navy/40 font-body ml-0.5">({product.reviews})</span>
+          <span className="text-[10px] text-gray-400 font-body ml-1">({product.reviews})</span>
         </div>
         <div className="flex items-center justify-between mt-auto">
           <div>
-            <span className="font-bold text-navy font-body">₹{product.price.toLocaleString('en-IN')}</span>
+            <span className="font-bold text-tss-blue font-display text-base">₹{product.price.toLocaleString('en-IN')}</span>
             {product.originalPrice > product.price && (
-              <span className="text-navy/35 text-xs line-through ml-1 font-body">₹{product.originalPrice.toLocaleString('en-IN')}</span>
+              <span className="text-gray-400 text-xs line-through ml-1 font-body">₹{product.originalPrice.toLocaleString('en-IN')}</span>
             )}
           </div>
           <button
             onClick={handleAdd}
-            className="w-8 h-8 rounded-full bg-navy hover:bg-gold text-white hover:text-navy transition-all flex items-center justify-center"
+            className="w-8 h-8 rounded-full bg-tss-blue hover:bg-tss-peach text-white transition-all flex items-center justify-center"
           >
             <ShoppingCart size={13} />
           </button>
@@ -129,93 +127,73 @@ export default function ShopPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-cream pt-20">
+      <main className="min-h-screen bg-gray-50 pt-20">
         {/* Page header */}
-        <div className="bg-navy py-12 px-4">
+        <div className="bg-tss-blue py-10 px-4">
           <div className="container-wide">
-            <span className="section-label text-gold/70">Discover</span>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-1">
-              All <span className="gold-text">Sculptures</span>
+            <span className="section-label text-tss-peach/80">Discover</span>
+            <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mt-1">
+              All Sculptures
             </h1>
-            <p className="text-white/45 font-body mt-2 text-sm">{filtered.length} products found</p>
+            <p className="text-white/50 font-body mt-1.5 text-sm">{filtered.length} products found</p>
           </div>
         </div>
 
-        <div className="container-wide py-10">
+        <div className="container-wide py-8">
           {/* Top bar */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center justify-between">
-            {/* Search */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-7 items-center justify-between">
             <div className="relative flex-1 max-w-md">
-              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-navy/40" />
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
               <input
-                id="shop-search-input"
                 type="text"
                 placeholder="Search sculptures..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-navy/10 bg-white font-body text-sm text-navy placeholder-navy/30 focus:outline-none focus:border-gold/50 transition-colors"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white font-body text-sm text-tss-blue placeholder-gray-400 focus:outline-none focus:border-tss-peach/50 transition-colors"
               />
               {search && (
-                <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-navy/30 hover:text-navy">
+                <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-tss-blue">
                   <X size={14} />
                 </button>
               )}
             </div>
 
-            <div className="flex items-center gap-3">
-              {/* Filter (mobile) */}
+            <div className="flex items-center gap-2.5">
               <button
-                id="shop-filter-btn"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden flex items-center gap-2 px-4 py-3 rounded-xl border border-navy/10 bg-white text-navy text-sm font-body"
+                className="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-tss-blue text-sm font-body"
               >
                 <Filter size={14} /> Filter
               </button>
-
-              {/* Sort */}
               <div className="relative">
                 <select
-                  id="shop-sort-select"
                   value={sort}
                   onChange={e => setSort(e.target.value)}
-                  className="appearance-none pl-4 pr-9 py-3 rounded-xl border border-navy/10 bg-white text-navy text-sm font-body focus:outline-none focus:border-gold/50 cursor-pointer"
+                  className="appearance-none pl-4 pr-9 py-2.5 rounded-xl border border-gray-200 bg-white text-tss-blue text-sm font-body focus:outline-none focus:border-tss-peach/50 cursor-pointer"
                 >
                   {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
                 </select>
-                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-navy/40 pointer-events-none" />
+                <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
               </div>
             </div>
           </div>
 
-          <div className="flex gap-8">
-            {/* Sidebar filter - desktop always visible, mobile toggleable */}
-            <aside className={clsx(
-              'w-64 shrink-0 transition-all',
-              'hidden lg:block'
-            )}>
-              <FilterSidebar
-                category={category}
-                setCategory={setCategory}
-                priceRange={priceRange}
-                setPriceRange={setPriceRange}
-              />
+          <div className="flex gap-7">
+            {/* Sidebar — desktop */}
+            <aside className="w-60 shrink-0 hidden lg:block">
+              <FilterSidebar category={category} setCategory={setCategory} priceRange={priceRange} setPriceRange={setPriceRange} />
             </aside>
 
             {/* Mobile sidebar overlay */}
             {sidebarOpen && (
               <div className="lg:hidden fixed inset-0 z-50 flex">
-                <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
+                <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
                 <div className="relative w-72 bg-white h-full overflow-y-auto p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="font-display text-lg font-semibold text-navy">Filters</h3>
-                    <button onClick={() => setSidebarOpen(false)}><X size={18} className="text-navy/50" /></button>
+                  <div className="flex items-center justify-between mb-5">
+                    <h3 className="font-display text-lg font-semibold text-tss-blue">Filters</h3>
+                    <button onClick={() => setSidebarOpen(false)}><X size={18} className="text-gray-400" /></button>
                   </div>
-                  <FilterSidebar
-                    category={category}
-                    setCategory={setCategory}
-                    priceRange={priceRange}
-                    setPriceRange={setPriceRange}
-                  />
+                  <FilterSidebar category={category} setCategory={setCategory} priceRange={priceRange} setPriceRange={setPriceRange} />
                 </div>
               </div>
             )}
@@ -224,11 +202,11 @@ export default function ShopPage() {
             <div className="flex-1">
               {filtered.length === 0 ? (
                 <div className="text-center py-20">
-                  <p className="font-display text-2xl text-navy/30 mb-2">No sculptures found</p>
-                  <p className="text-navy/40 font-body text-sm">Try adjusting your filters or search term</p>
+                  <p className="font-display text-xl text-gray-400 mb-2">No sculptures found</p>
+                  <p className="text-gray-400 font-body text-sm">Try adjusting your filters</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                   {filtered.map(p => <ShopProductCard key={p.id} product={p} />)}
                 </div>
               )}
@@ -242,10 +220,7 @@ export default function ShopPage() {
 }
 
 function FilterSidebar({
-  category,
-  setCategory,
-  priceRange,
-  setPriceRange,
+  category, setCategory, priceRange, setPriceRange,
 }: {
   category: Category | 'all'
   setCategory: (c: Category | 'all') => void
@@ -253,21 +228,19 @@ function FilterSidebar({
   setPriceRange: (r: number[]) => void
 }) {
   return (
-    <div className="space-y-8">
-      {/* Categories */}
+    <div className="space-y-7">
       <div>
-        <h3 className="font-body font-semibold text-navy text-sm mb-3 uppercase tracking-wide">Category</h3>
-        <div className="space-y-1.5">
+        <h3 className="font-display font-semibold text-tss-blue text-sm mb-3 uppercase tracking-wide">Category</h3>
+        <div className="space-y-1">
           {CATEGORY_OPTIONS.map(opt => (
             <button
               key={opt.value}
-              id={`filter-category-${opt.value}`}
               onClick={() => setCategory(opt.value)}
               className={clsx(
                 'w-full text-left px-3 py-2 rounded-lg text-sm font-body transition-all',
                 category === opt.value
-                  ? 'bg-navy text-white font-semibold'
-                  : 'text-navy/60 hover:bg-navy/5 hover:text-navy'
+                  ? 'bg-tss-blue text-white font-semibold'
+                  : 'text-gray-500 hover:bg-gray-100 hover:text-tss-blue'
               )}
             >
               {opt.label}
@@ -276,39 +249,31 @@ function FilterSidebar({
         </div>
       </div>
 
-      {/* Price range */}
       <div>
-        <h3 className="font-body font-semibold text-navy text-sm mb-3 uppercase tracking-wide">Price Range</h3>
-        <div className="space-y-3">
-          <div className="flex justify-between text-xs text-navy/50 font-body">
-            <span>₹{priceRange[0].toLocaleString('en-IN')}</span>
-            <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
-          </div>
-          <input
-            id="filter-price-max"
-            type="range"
-            min={0}
-            max={10000}
-            step={100}
-            value={priceRange[1]}
-            onChange={e => setPriceRange([priceRange[0], Number(e.target.value)])}
-            className="w-full accent-gold"
-          />
+        <h3 className="font-display font-semibold text-tss-blue text-sm mb-3 uppercase tracking-wide">Price Range</h3>
+        <div className="flex justify-between text-xs text-gray-500 font-body mb-2">
+          <span>₹{priceRange[0].toLocaleString('en-IN')}</span>
+          <span>₹{priceRange[1].toLocaleString('en-IN')}</span>
         </div>
+        <input
+          type="range" min={0} max={10000} step={100}
+          value={priceRange[1]}
+          onChange={e => setPriceRange([priceRange[0], Number(e.target.value)])}
+          className="w-full accent-tss-peach"
+        />
         <div className="grid grid-cols-2 gap-2 mt-3">
           {[[0, 1000], [1000, 3000], [3000, 6000], [6000, 10000]].map(([min, max]) => (
             <button
               key={`${min}-${max}`}
-              id={`filter-price-${min}-${max}`}
               onClick={() => setPriceRange([min, max])}
               className={clsx(
                 'text-xs font-body py-1.5 px-2 rounded-lg border transition-all',
                 priceRange[0] === min && priceRange[1] === max
-                  ? 'border-gold bg-gold/10 text-navy font-semibold'
-                  : 'border-navy/10 text-navy/50 hover:border-gold/40'
+                  ? 'border-tss-peach bg-tss-peach/10 text-tss-blue font-semibold'
+                  : 'border-gray-200 text-gray-500 hover:border-tss-peach/40'
               )}
             >
-              ₹{(min / 1000).toFixed(0) || '0'}K – ₹{(max / 1000).toFixed(0)}K
+              ₹{min === 0 ? '0' : `${min/1000}K`} – ₹{max/1000}K
             </button>
           ))}
         </div>

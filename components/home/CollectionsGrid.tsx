@@ -50,8 +50,8 @@ export default function CollectionsGrid() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href="/collections" id="collections-view-all-btn" className="btn-blue-outline">
-            View All Collections <ArrowRight size={16} />
+          <Link href="/shop" id="collections-view-all-btn" className="btn-blue-outline">
+            Browse All Sculptures <ArrowRight size={16} />
           </Link>
         </div>
       </div>
