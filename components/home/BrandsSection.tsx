@@ -229,10 +229,6 @@ export default function BrandsSection() {
           ))}
         </div>
 
-        {/* Footer note */}
-        <p className="text-center mt-10 text-tss-stone/60 font-body text-xs tracking-wide">
-          Miniworks Design Merchandise Pvt. Ltd. · Vanagaram, Chennai, TN 600077
-        </p>
       </div>
     </section>
   )

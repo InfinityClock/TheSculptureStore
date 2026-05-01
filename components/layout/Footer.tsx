@@ -75,10 +75,10 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/8 py-5">
+      <div className="pb-8">
         <div className="container-wide">
           <p className="text-xs text-white/25 font-body text-center">
-            © {new Date().getFullYear()} The Sculpture Store · Miniworks Design Merchandise Pvt. Ltd. · Made with ❤️ in India.
+            © {new Date().getFullYear()} The Sculpture Store · Miniworks Design Merchandise Pvt. Ltd.
           </p>
         </div>
       </div>
