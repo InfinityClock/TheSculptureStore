@@ -2,74 +2,83 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Mail, Phone } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0D1E2E' }} className="text-white">
+    <footer className="bg-white border-t border-gray-100 text-gray-800">
 
-      <div className="container-wide pt-20 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-14">
+      <div className="container-wide py-14">
 
-          {/* Brand */}
-          <div className="flex flex-col gap-4">
-            <Link href="/">
-              <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={140} height={40} className="h-8 w-auto" />
-            </Link>
-            <p className="text-white/40 text-sm leading-relaxed font-body max-w-[200px]">
-              Hand-crafted 3D sculptures from Chennai, delivered worldwide.
-            </p>
-            <div className="flex flex-col gap-2">
-              <a href="mailto:3dselfiy@gmail.com" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Mail size={12} className="shrink-0" /> 3dselfiy@gmail.com
-              </a>
-              <a href="tel:+917900060025" className="flex items-center gap-2 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Phone size={12} className="shrink-0" /> +91 79000 60025
-              </a>
-            </div>
-          </div>
+        {/* Brand row */}
+        <div className="flex items-center gap-3 mb-3">
+          <Image src="/logo/logo-blue.png" alt="The Sculpture Store" width={48} height={48} className="h-12 w-auto" />
+          <span className="font-display font-bold text-xl text-gray-900">The Sculpture Store</span>
+        </div>
 
-          {/* Shop */}
+        {/* Tagline */}
+        <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
+          3D sculptures made by hand in Chennai. Shipped to your door anywhere in the world.
+        </p>
+
+        {/* Social icons */}
+        <div className="flex gap-3 mb-10">
+          {[
+            { label: 'Instagram', href: 'https://instagram.com/3dselfiy', path: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM17.5 6.5h.01" },
+            { label: 'Facebook', href: 'https://facebook.com/3dselfiy', path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+            { label: 'LinkedIn', href: 'https://linkedin.com/company/3dselfiy', path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" },
+          ].map(({ label, href, path }) => (
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+              className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-all">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d={path} />
+              </svg>
+            </a>
+          ))}
+        </div>
+
+        {/* Link columns */}
+        <div className="grid grid-cols-2 gap-8">
+
           <div>
-            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 font-body mb-4">Shop</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-display font-bold text-gray-900 text-base mb-4">Company</h4>
+            <ul className="flex flex-col gap-3">
               {[
-                ['Divine Idols', '/shop?category=divine-idols'],
-                ['Monuments', '/shop?category=monuments'],
-                ['Custom Sculptures', '/shop?category=custom-sculptures'],
-                ['Best Sellers', '/shop?sort=bestsellers'],
+                ['Our Story', '/about'],
+                ['How It Works', '/#how-it-works'],
+                ['Blog', '/blog'],
+                ['Contact Us', '/contact'],
               ].map(([label, href]) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm text-white/35 hover:text-tss-peach transition-colors font-body">{label}</Link>
+                  <Link href={href} className="text-sm text-gray-500 hover:text-tss-peach transition-colors font-body">{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Company */}
           <div>
-            <h4 className="text-[10px] font-bold tracking-widest uppercase text-white/40 font-body mb-4">Company</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 className="font-display font-bold text-gray-900 text-base mb-4">Support</h4>
+            <ul className="flex flex-col gap-3">
               {[
-                ['Our Story', '/about'],
-                ['Blog', '/blog'],
-                ['Contact Us', '/contact'],
+                ['Our Products', '/shop'],
+                ['Shipping & Returns', '/shipping'],
+                ['Track Order', '/track'],
                 ['FAQ', '/faq'],
               ].map(([label, href]) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm text-white/35 hover:text-tss-peach transition-colors font-body">{label}</Link>
+                  <Link href={href} className="text-sm text-gray-500 hover:text-tss-peach transition-colors font-body">{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
         </div>
+
       </div>
 
-      {/* Bottom bar — no border */}
-      <div className="py-5">
+      {/* Bottom bar */}
+      <div className="border-t border-gray-100 py-5">
         <div className="container-wide">
-          <p className="text-xs text-white/25 font-body text-center">
+          <p className="text-xs text-gray-400 font-body text-center">
             © {new Date().getFullYear()} The Sculpture Store · Miniworks Design Merchandise Pvt. Ltd. · Made with ❤️ in India.
           </p>
         </div>
