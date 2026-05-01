@@ -5,18 +5,18 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100 text-gray-800">
+    <footer style={{ backgroundColor: '#0D1E2E' }} className="text-white">
 
       <div className="container-wide py-14">
 
         {/* Brand row */}
         <div className="flex items-center gap-3 mb-3">
-          <Image src="/logo/logo-blue.png" alt="The Sculpture Store" width={48} height={48} className="h-12 w-auto" />
-          <span className="font-display font-bold text-xl text-gray-900">The Sculpture Store</span>
+          <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={48} height={48} className="h-10 w-auto" />
+          <span className="font-display font-bold text-lg text-white">The Sculpture Store</span>
         </div>
 
         {/* Tagline */}
-        <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
+        <p className="text-white/45 text-sm leading-relaxed mb-6 max-w-xs">
           3D sculptures made by hand in Chennai. Shipped to your door anywhere in the world.
         </p>
 
@@ -28,7 +28,7 @@ export default function Footer() {
             { label: 'LinkedIn', href: 'https://linkedin.com/company/3dselfiy', path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" },
           ].map(({ label, href, path }) => (
             <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-              className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-800 transition-all">
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-all">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d={path} />
               </svg>
@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8">
 
           <div>
-            <h4 className="font-display font-bold text-gray-900 text-base mb-4">Company</h4>
+            <h4 className="font-display font-bold text-white text-base mb-4">Company</h4>
             <ul className="flex flex-col gap-3">
               {[
                 ['Our Story', '/about'],
@@ -49,14 +49,14 @@ export default function Footer() {
                 ['Contact Us', '/contact'],
               ].map(([label, href]) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm text-gray-500 hover:text-tss-peach transition-colors font-body">{label}</Link>
+                  <Link href={href} className="text-sm text-white/45 hover:text-tss-peach transition-colors font-body">{label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-gray-900 text-base mb-4">Support</h4>
+            <h4 className="font-display font-bold text-white text-base mb-4">Support</h4>
             <ul className="flex flex-col gap-3">
               {[
                 ['Our Products', '/shop'],
@@ -65,7 +65,7 @@ export default function Footer() {
                 ['FAQ', '/faq'],
               ].map(([label, href]) => (
                 <li key={label}>
-                  <Link href={href} className="text-sm text-gray-500 hover:text-tss-peach transition-colors font-body">{label}</Link>
+                  <Link href={href} className="text-sm text-white/45 hover:text-tss-peach transition-colors font-body">{label}</Link>
                 </li>
               ))}
             </ul>
@@ -76,9 +76,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-100 py-5">
+      <div className="border-t border-white/8 py-5">
         <div className="container-wide">
-          <p className="text-xs text-gray-400 font-body text-center">
+          <p className="text-xs text-white/25 font-body text-center">
             © {new Date().getFullYear()} The Sculpture Store · Miniworks Design Merchandise Pvt. Ltd. · Made with ❤️ in India.
           </p>
         </div>
