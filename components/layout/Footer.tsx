@@ -15,9 +15,9 @@ const SocialIcon = ({ path, label, href }: { path: string; label: string; href: 
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#0D1E2E' }} className="text-white">
+    <footer style={{ backgroundColor: '#0D1E2E' }} className="text-white pt-2">
 
-      <div className="container-wide pt-12 pb-10">
+      <div className="container-wide pt-20 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-14">
 
           {/* Brand */}
