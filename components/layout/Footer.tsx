@@ -18,10 +18,10 @@ export default function Footer() {
     <footer style={{ backgroundColor: '#0D1E2E' }} className="text-white">
 
       <div className="container-wide py-14">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
 
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col gap-5">
             <Link href="/">
               <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={140} height={40} className="h-8 w-auto" />
             </Link>

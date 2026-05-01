@@ -136,7 +136,7 @@ export default function Navbar() {
 
             <Link
               href="/shop"
-              className="hidden md:flex btn-peach py-2 px-5 text-xs"
+              className="hidden lg:flex btn-peach py-2 px-5 text-xs"
             >
               Order Now
             </Link>
