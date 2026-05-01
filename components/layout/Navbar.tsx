@@ -38,20 +38,32 @@ export default function Navbar() {
       <header
         className={clsx(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          // Mobile: always solid white. Desktop: transparent on hero, white when scrolled.
+          'bg-white shadow-sm border-b border-gray-100',
+          'lg:border-0 lg:shadow-none',
           scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-gray-100 py-3'
-            : 'bg-transparent py-5'
+            ? 'lg:bg-white/95 lg:backdrop-blur-xl lg:shadow-sm lg:border-b lg:border-gray-100 py-3'
+            : 'lg:bg-transparent py-3 lg:py-5'
         )}
       >
         <div className="container-wide flex items-center justify-between">
+
           {/* Logo */}
           <Link href="/" className="shrink-0">
+            <Image
+              src={scrolled ? '/logo/logo-blue.png' : '/logo/logo-blue.png'}
+              alt="The Sculpture Store"
+              width={150}
+              height={44}
+              className="h-8 w-auto object-contain lg:hidden"
+              priority
+            />
             <Image
               src={scrolled ? '/logo/logo-blue.png' : '/logo/logo-white.png'}
               alt="The Sculpture Store"
               width={150}
               height={44}
-              className="h-8 w-auto object-contain transition-opacity duration-300"
+              className="h-8 w-auto object-contain hidden lg:block transition-opacity duration-300"
               priority
             />
           </Link>
@@ -91,7 +103,6 @@ export default function Navbar() {
                     )}
                   </Link>
                 )}
-
                 {'children' in link && link.children && activeDropdown === link.label && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden">
                     <div className="py-2">
@@ -111,18 +122,17 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-2">
+          {/* Desktop actions */}
+          <div className="hidden lg:flex items-center gap-2">
             <button
               aria-label="Search"
               className={clsx(
-                'hidden sm:flex w-9 h-9 items-center justify-center rounded-full transition-colors',
+                'flex w-9 h-9 items-center justify-center rounded-full transition-colors',
                 scrolled ? 'text-gray-500 hover:text-tss-blue hover:bg-gray-100' : 'text-white/70 hover:text-white hover:bg-white/10'
               )}
             >
               <Search size={17} />
             </button>
-
             <Link
               href="/cart"
               aria-label="Cart"
@@ -133,36 +143,31 @@ export default function Navbar() {
             >
               <ShoppingCart size={17} />
             </Link>
-
-            <Link
-              href="/shop"
-              className="hidden lg:flex btn-peach py-2 px-5 text-xs"
-            >
+            <Link href="/shop" className="btn-peach py-2 px-5 text-xs">
               Order Now
             </Link>
-
-            <button
-              aria-label="Menu"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={clsx(
-                'lg:hidden flex w-9 h-9 items-center justify-center rounded-full transition-colors',
-                scrolled ? 'text-gray-600 hover:bg-gray-100' : 'text-white/80 hover:bg-white/10'
-              )}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
           </div>
+
+          {/* Mobile: hamburger only */}
+          <button
+            aria-label="Menu"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden flex w-9 h-9 items-center justify-center rounded-full text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
         </div>
       </header>
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-white flex flex-col pt-20 px-6 overflow-y-auto">
-          <div className="mb-6">
+        <div className="fixed inset-0 z-40 bg-white flex flex-col pt-16 overflow-y-auto">
+          <div className="px-6 pt-6 pb-4 border-b border-gray-100">
             <Image src="/logo/logo-blue.png" alt="The Sculpture Store" width={140} height={40} className="h-8 w-auto" />
           </div>
 
-          <nav className="flex flex-col divide-y divide-gray-100">
+          <nav className="flex flex-col px-6 py-4 divide-y divide-gray-100">
             {NAV_LINKS.map((link) => (
               <div key={link.label}>
                 {'external' in link && link.external ? (
@@ -202,7 +207,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="px-6 mt-4 flex flex-col gap-3">
             <Link href="/shop" onClick={() => setMobileOpen(false)} className="btn-peach justify-center">
               Order Now
             </Link>
@@ -217,7 +222,7 @@ export default function Navbar() {
             </a>
           </div>
 
-          <div className="mt-auto pb-8 pt-8 text-sm text-gray-400 font-body space-y-1">
+          <div className="mt-auto px-6 pb-8 pt-6 text-sm text-gray-400 font-body space-y-1">
             <p>📍 Vanagaram, Chennai, TN 600077</p>
             <p>📞 +91 79000 60025 · 🚚 Ships to 50+ countries</p>
           </div>
