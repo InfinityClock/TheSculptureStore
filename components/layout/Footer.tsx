@@ -10,9 +10,8 @@ export default function Footer() {
       <div className="container-wide py-14">
 
         {/* Brand row */}
-        <div className="flex items-center gap-3 mb-3">
-          <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={48} height={48} className="h-10 w-auto" />
-          <span className="font-display font-bold text-lg text-white">The Sculpture Store</span>
+        <div className="mb-3">
+          <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={200} height={60} className="h-14 w-auto" />
         </div>
 
         {/* Tagline */}
