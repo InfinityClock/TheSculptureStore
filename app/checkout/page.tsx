@@ -84,7 +84,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-7">
-            {/* Left — step content */}
+            {/* Left - step content */}
             <div className="lg:col-span-2">
               {step === 0 && (
                 <div className="bg-white rounded-2xl p-6 lg:p-8 border border-gray-100 shadow-sm">
@@ -234,14 +234,14 @@ export default function CheckoutPage() {
                   <div className="flex gap-3">
                     <button onClick={() => setStep(2)} className="btn-blue-outline text-sm">← Back</button>
                     <button onClick={() => setOrderPlaced(true)} className="btn-peach text-sm flex-1 justify-center">
-                      Place Order — ₹{total.toLocaleString('en-IN')}
+                      Place Order: ₹{total.toLocaleString('en-IN')}
                     </button>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Right — order summary */}
+            {/* Right - order summary */}
             <div className="hidden lg:block">
               <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm sticky top-24">
                 <h3 className="font-display text-lg font-bold text-tss-blue mb-4">Order Summary</h3>

@@ -265,7 +265,7 @@ export default function ProductPage() {
                 {[
                   { icon: Truck, title: 'Standard Delivery', desc: '5–7 business days. Free on orders above ₹999.' },
                   { icon: Shield, title: 'Express Delivery', desc: '2–3 business days. Available for ₹149 extra.' },
-                  { icon: RotateCcw, title: '7-Day Returns', desc: 'Not happy? Return within 7 days — no questions asked.' },
+                  { icon: RotateCcw, title: '7-Day Returns', desc: 'Not happy? Return within 7 days, no questions asked.' },
                 ].map(({ icon: Icon, title, desc }) => (
                   <div key={title} className="flex gap-3">
                     <Icon size={16} className="text-tss-peach shrink-0 mt-0.5" />

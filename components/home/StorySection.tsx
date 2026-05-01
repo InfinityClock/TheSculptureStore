@@ -25,7 +25,7 @@ export default function StorySection() {
 
             {/* Description */}
             <p className="text-white/60 font-body text-base sm:text-lg leading-relaxed max-w-lg mb-10">
-              We started in Chennai with one belief: divine art belongs in every home. Today, Miniworks Design ships hand-crafted 3D sculptures to 50+ countries — blending precision technology with the soul of Indian craftsmanship.
+              We started in Chennai with one belief: divine art belongs in every home. Today, Miniworks Design ships hand-crafted 3D sculptures to 50+ countries, blending precision technology with the soul of Indian craftsmanship.
             </p>
 
             {/* Buttons */}
@@ -55,7 +55,7 @@ export default function StorySection() {
           {/* Right Image Side */}
           <div className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-[32px] overflow-hidden group">
             <img 
-              src="/images/founder.png" 
+              src="/images/founder.jpeg"
               alt="Founder Jagadesh Koteesvaran with Sculpture" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />

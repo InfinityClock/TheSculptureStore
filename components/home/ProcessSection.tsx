@@ -20,7 +20,7 @@ const STEPS = [
     num: '03',
     icon: PackageCheck,
     title: 'Delivered to Your Door',
-    body: 'Packed in premium gift-ready packaging and shipped anywhere in India — and to 50+ countries worldwide. Tracking link sent on dispatch.',
+    body: 'Packed in premium gift-ready packaging and shipped anywhere in India and to 50+ countries worldwide. Tracking link sent on dispatch.',
     color: '#1D3D5C',
   },
 ]
@@ -36,7 +36,7 @@ export default function ProcessSection() {
             How It <span className="peach-text">Works</span>
           </h2>
           <p className="text-tss-stone mt-4 max-w-xl mx-auto font-body leading-relaxed text-[15px]">
-            From your idea to your doorstep — good quality, honest pricing, delivered on time.
+            From your idea to your doorstep, good quality, honest pricing, delivered on time.
           </p>
         </div>
 

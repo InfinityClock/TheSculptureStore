@@ -179,7 +179,7 @@ export default function ShopPage() {
           </div>
 
           <div className="flex gap-7">
-            {/* Sidebar — desktop */}
+            {/* Sidebar - desktop */}
             <aside className="w-60 shrink-0 hidden lg:block">
               <FilterSidebar category={category} setCategory={setCategory} priceRange={priceRange} setPriceRange={setPriceRange} />
             </aside>

@@ -21,7 +21,7 @@ export default function TrustSection() {
             The Miniworks Promise
           </h2>
           <p className="text-gray-500 mt-3 max-w-lg mx-auto font-body leading-relaxed text-[15px]">
-            Good quality, honest pricing, delivered on time — on every single order.
+            Good quality, honest pricing, delivered on time, on every single order.
           </p>
         </div>
 

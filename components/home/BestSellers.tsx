@@ -39,7 +39,7 @@ function ProductCard({ product }: { product: Product }) {
           <Heart size={13} className={wishlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'} />
         </button>
 
-        {/* Quick add — slides up on hover */}
+        {/* Quick add - slides up on hover */}
         <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
           <button
             onClick={handleAdd}

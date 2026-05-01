@@ -307,7 +307,7 @@ export const CATEGORIES = [
   {
     id: 'custom-sculptures',
     label: 'Custom Sculptures',
-    description: 'Your photo, your story — in 3D',
+    description: 'Your photo, your story, in 3D',
     icon: '✨',
     image: '/images/products/custom-portrait.png',
     count: 22,
@@ -322,7 +322,7 @@ export const TESTIMONIALS = [
     location: 'Mumbai, Maharashtra',
     avatar: 'PS',
     rating: 5,
-    review: 'The Ganesha idol for my puja room is absolutely stunning. The detail work is breathtaking and the gold finish looks so luxurious. Miniworks delivered exactly what was promised — on time!',
+    review: 'The Ganesha idol for my puja room is absolutely stunning. The detail work is breathtaking and the gold finish looks so luxurious. Miniworks delivered exactly what was promised, on time!',
     product: 'Lord Ganesha - Blessing Pose',
   },
   {
@@ -340,7 +340,7 @@ export const TESTIMONIALS = [
     location: 'Dubai, UAE',
     avatar: 'AN',
     rating: 5,
-    review: 'The custom portrait sculpture of my grandfather was delivered all the way to Dubai on his 80th birthday. He was moved to tears. The likeness is incredible — you can even see his smile!',
+    review: 'The custom portrait sculpture of my grandfather was delivered all the way to Dubai on his 80th birthday. He was moved to tears. The likeness is incredible, you can even see his smile!',
     product: 'Custom Portrait Sculpture',
   },
   {
@@ -358,7 +358,7 @@ export const TESTIMONIALS = [
     location: 'Hyderabad, Telangana',
     avatar: 'SR',
     rating: 5,
-    review: 'The Kalam monument is a conversation starter at our office. The bronze finish is so realistic. Jagadesh and his team went above and beyond — fast delivery, premium packing.',
+    review: 'The Kalam monument is a conversation starter at our office. The bronze finish is so realistic. Jagadesh and his team went above and beyond, fast delivery, premium packing.',
     product: 'APJ Abdul Kalam - Tribute Monument',
   },
 ]

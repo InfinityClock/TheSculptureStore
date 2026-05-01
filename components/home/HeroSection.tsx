@@ -19,7 +19,7 @@ export default function HeroSection() {
       </div>
 
       <div className="container-wide relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-28 pb-16 lg:py-0">
-        {/* Left — copy */}
+        {/* Left - copy */}
         <div className="flex flex-col">
           {/* Pill badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-tss-peach/25 bg-tss-peach/10 px-4 py-1.5 w-fit mb-6">
@@ -35,7 +35,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-white/55 text-base sm:text-lg leading-relaxed max-w-lg font-body mb-3">
-            Hand-sculpted divine idols, custom portraits, monuments & more — crafted with precision and delivered to your door anywhere in the world.
+            Hand-sculpted divine idols, custom portraits, monuments & more, crafted with precision and delivered to your door anywhere in the world.
           </p>
 
           <p className="text-tss-peach/90 font-display font-semibold text-sm mb-8">
@@ -78,7 +78,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right — product image */}
+        {/* Right - product image */}
         <div className="relative flex items-center justify-center">
           <div className="absolute w-72 h-72 rounded-full opacity-15"
             style={{ background: 'radial-gradient(circle, #F4956A 0%, transparent 70%)' }} />
