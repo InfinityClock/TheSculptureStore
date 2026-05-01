@@ -6,8 +6,8 @@ import { MapPin, Mail, Phone, MessageCircle } from 'lucide-react'
 
 const SocialIcon = ({ path, label, href }: { path: string; label: string; href: string }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-    className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/40 hover:text-tss-peach hover:border-tss-peach/40 transition-all">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    className="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:text-tss-peach hover:border-tss-peach/50 transition-all duration-200">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d={path} />
     </svg>
   </a>
@@ -43,59 +43,66 @@ export default function Footer() {
   return (
     <footer style={{ background: '#0D1E2E' }} className="text-white">
 
-      {/* Newsletter */}
-      <div className="border-b border-white/8">
-        <div className="container-wide py-10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="min-w-0">
-              <h3 className="font-display text-xl font-semibold text-white mb-1">
+      {/* Newsletter band */}
+      <div style={{ background: '#0a1822' }} className="border-y border-white/6">
+        <div className="container-wide py-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <div>
+              <p className="font-display text-lg font-semibold text-white">
                 Stay Connected with <span className="peach-text">Artisan Craft</span>
-              </h3>
-              <p className="text-white/40 text-sm font-body">
+              </p>
+              <p className="text-white/40 text-sm font-body mt-0.5">
                 New arrivals, exclusive offers & artisan stories, straight to your inbox.
               </p>
             </div>
-            <form onSubmit={(e) => e.preventDefault()} className="flex gap-3 w-full md:w-auto md:min-w-[380px]">
+            <form onSubmit={(e) => e.preventDefault()} className="flex gap-2 w-full sm:w-auto sm:min-w-[360px]">
               <input
                 type="email"
                 placeholder="Your email address"
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-tss-peach/40 transition-colors font-body"
+                className="flex-1 bg-white/6 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-tss-peach/50 transition-colors font-body"
               />
-              <button type="submit" className="btn-peach text-xs rounded-xl px-5 whitespace-nowrap">Subscribe</button>
+              <button type="submit" className="btn-peach rounded-lg px-5 text-sm font-semibold whitespace-nowrap">
+                Subscribe
+              </button>
             </form>
           </div>
         </div>
       </div>
 
-      {/* Main grid */}
-      <div className="container-wide py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 lg:gap-12">
+      {/* Main footer body */}
+      <div className="container-wide pt-14 pb-10">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
 
           {/* Brand column */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-block mb-5">
-              <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={160} height={48} className="h-9 w-auto" />
+          <div className="lg:w-64 shrink-0">
+            <Link href="/" className="inline-block mb-6">
+              <Image src="/logo/logo-white.png" alt="The Sculpture Store" width={150} height={44} className="h-9 w-auto" />
             </Link>
-            <p className="text-white/40 text-sm leading-relaxed font-body max-w-[260px] mb-6">
+
+            <p className="text-white/40 text-sm leading-relaxed font-body mb-7">
               3D sculptures made by hand in Chennai. Good quality, honest pricing, delivered to your door anywhere in the world.
             </p>
 
-            <div className="flex flex-col gap-2.5 mb-6">
-              <a href="mailto:3dselfiy@gmail.com" className="flex items-center gap-2.5 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Mail size={13} className="shrink-0" /> 3dselfiy@gmail.com
+            <div className="flex flex-col gap-3 mb-7">
+              <a href="mailto:3dselfiy@gmail.com" className="flex items-center gap-3 text-sm text-white/40 hover:text-tss-peach transition-colors font-body group">
+                <Mail size={14} className="text-white/25 group-hover:text-tss-peach transition-colors shrink-0" />
+                3dselfiy@gmail.com
               </a>
-              <a href="tel:+917900060025" className="flex items-center gap-2.5 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <Phone size={13} className="shrink-0" /> +91 79000 60025
+              <a href="tel:+917900060025" className="flex items-center gap-3 text-sm text-white/40 hover:text-tss-peach transition-colors font-body group">
+                <Phone size={14} className="text-white/25 group-hover:text-tss-peach transition-colors shrink-0" />
+                +91 79000 60025
               </a>
-              <a href="https://wa.me/917900060026" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-white/35 hover:text-tss-peach transition-colors font-body">
-                <MessageCircle size={13} className="shrink-0" /> WhatsApp: +91 79000 60026
+              <a href="https://wa.me/917900060026" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-white/40 hover:text-tss-peach transition-colors font-body group">
+                <MessageCircle size={14} className="text-white/25 group-hover:text-tss-peach transition-colors shrink-0" />
+                WhatsApp: +91 79000 60026
               </a>
-              <span className="flex items-center gap-2.5 text-sm text-white/35 font-body">
-                <MapPin size={13} className="shrink-0" /> Vanagaram, Chennai, TN 600077
+              <span className="flex items-center gap-3 text-sm text-white/40 font-body">
+                <MapPin size={14} className="text-white/25 shrink-0" />
+                Vanagaram, Chennai, TN 600077
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <SocialIcon href="https://instagram.com/3dselfiy" label="Instagram" path="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM21 2H3a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM17.5 6.5h.01" />
               <SocialIcon href="https://facebook.com/3dselfiy" label="Facebook" path="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               <SocialIcon href="https://linkedin.com/company/3dselfiy" label="LinkedIn" path="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
@@ -103,25 +110,31 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Divider — vertical on lg, horizontal on mobile */}
+          <div className="hidden lg:block w-px bg-white/6 self-stretch" />
+          <div className="block lg:hidden h-px bg-white/6 w-full" />
+
           {/* Link columns */}
-          {[
-            { title: 'SHOP', links: FOOTER_LINKS.shop },
-            { title: 'COMPANY', links: FOOTER_LINKS.company },
-            { title: 'SUPPORT', links: FOOTER_LINKS.support },
-          ].map(({ title, links }) => (
-            <div key={title}>
-              <h4 className="font-body font-bold text-white/50 text-[10px] tracking-widest mb-5 uppercase">{title}</h4>
-              <ul className="flex flex-col gap-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-white/40 hover:text-tss-peach transition-colors font-body">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-10">
+            {[
+              { title: 'Shop', links: FOOTER_LINKS.shop },
+              { title: 'Company', links: FOOTER_LINKS.company },
+              { title: 'Support', links: FOOTER_LINKS.support },
+            ].map(({ title, links }) => (
+              <div key={title}>
+                <h4 className="font-body font-bold text-white text-xs tracking-widest uppercase mb-5">{title}</h4>
+                <ul className="flex flex-col gap-3.5">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <Link href={link.href} className="text-sm text-white/40 hover:text-tss-peach transition-colors font-body">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
         </div>
       </div>
@@ -129,14 +142,16 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/6 py-5">
         <div className="container-wide flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs text-white/25 font-body">
+          <p className="text-xs text-white/30 font-body">
             © {new Date().getFullYear()} The Sculpture Store · A brand of{' '}
-            <span className="text-white/40">Miniworks Design Merchandise Pvt. Ltd.</span>
+            <span className="text-white/50">Miniworks Design Merchandise Pvt. Ltd.</span>
             {' '}· Made with ❤️ in India.
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((t) => (
-              <Link key={t} href={`/${t.toLowerCase().replace(/ /g, '-')}`} className="text-xs text-white/25 hover:text-tss-peach transition-colors font-body">{t}</Link>
+              <Link key={t} href={`/${t.toLowerCase().replace(/ /g, '-')}`} className="text-xs text-white/30 hover:text-tss-peach transition-colors font-body">
+                {t}
+              </Link>
             ))}
           </div>
         </div>
