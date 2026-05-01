@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
       style={{ background: 'linear-gradient(150deg, #0D1E2E 0%, #1D3D5C 60%, #1a3450 100%)' }}
     >
       {/* Subtle background accents */}
@@ -18,7 +18,7 @@ export default function HeroSection() {
           style={{ background: 'radial-gradient(circle, #254D73 0%, transparent 70%)' }} />
       </div>
 
-      <div className="container-wide relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-28 pb-16 lg:py-0">
+      <div className="container-wide relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-24 pb-12 lg:pt-0 lg:pb-0 lg:min-h-screen lg:flex lg:items-center">
         {/* Left - copy */}
         <div className="flex flex-col">
           {/* Pill badge */}
