@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, Tag, Truck } from 'lucide-react'
 import { PRODUCTS } from '@/lib/data'
+import { calculateShipping } from '@/lib/shipping'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -27,7 +29,7 @@ export default function CartPage() {
   const remove = (id: string) => setCart(c => c.filter(item => item.product.id !== id))
 
   const subtotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
-  const shipping = subtotal >= 999 ? 0 : 149
+  const shipping = calculateShipping(subtotal)
   const discount = couponApplied ? Math.round(subtotal * 0.1) : 0
   const total = subtotal + shipping - discount
 
@@ -53,8 +55,8 @@ export default function CartPage() {
               <div className="lg:col-span-2 space-y-4">
                 {cart.map(({ product, quantity, size }) => (
                   <div key={product.id} className="bg-white rounded-2xl p-5 flex gap-4 border border-gray-100 shadow-sm">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-gray-50">
-                      <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden shrink-0 bg-gray-50">
+                      <Image src={product.image} alt={product.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex justify-between gap-2">

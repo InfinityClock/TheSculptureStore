@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Check, ChevronRight, CreditCard, Smartphone, Building2, Lock } from 'lucide-react'
 import { PRODUCTS } from '@/lib/data'
+import { calculateShipping } from '@/lib/shipping'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { clsx } from 'clsx'
@@ -28,7 +30,22 @@ export default function CheckoutPage() {
   const [orderId] = useState(() => Math.floor(Math.random() * 90000 + 10000))
 
   const update = (k: keyof typeof form, v: string) => setForm(f => ({ ...f, [k]: v }))
-  const shipping = delivery === 'express' ? 149 : subtotal >= 999 ? 0 : 49
+  const [errors, setErrors] = useState<Partial<typeof form>>({})
+
+  const validateAddress = () => {
+    const e: Partial<typeof form> = {}
+    if (!form.name.trim()) e.name = 'Required'
+    if (!form.phone.trim()) e.phone = 'Required'
+    if (!form.email.trim()) e.email = 'Required'
+    if (!form.address.trim()) e.address = 'Required'
+    if (!form.city.trim()) e.city = 'Required'
+    if (!form.pincode.trim()) e.pincode = 'Required'
+    if (!form.state) e.state = 'Required'
+    setErrors(e)
+    return Object.keys(e).length === 0
+  }
+
+  const shipping = delivery === 'express' ? calculateShipping(subtotal, 'express') : calculateShipping(subtotal, 'standard')
   const total = subtotal + shipping
 
   if (orderPlaced) {
@@ -104,17 +121,18 @@ export default function CheckoutPage() {
                           type={type}
                           placeholder={placeholder}
                           value={form[key as keyof typeof form]}
-                          onChange={e => update(key as keyof typeof form, e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-body text-tss-blue placeholder-gray-400 focus:outline-none focus:border-tss-peach/50 transition-colors"
+                          onChange={e => { update(key as keyof typeof form, e.target.value); setErrors(p => ({ ...p, [key]: '' })) }}
+                          className={clsx('w-full px-4 py-3 border rounded-xl text-sm font-body text-tss-blue placeholder-gray-400 focus:outline-none transition-colors', errors[key as keyof typeof form] ? 'border-red-400 focus:border-red-400' : 'border-gray-200 focus:border-tss-peach/50')}
                         />
+                        {errors[key as keyof typeof form] && <p className="text-xs text-red-500 font-body mt-1">{errors[key as keyof typeof form]}</p>}
                       </div>
                     ))}
                     <div className="sm:col-span-2">
                       <label className="block text-xs font-semibold text-gray-500 font-body mb-1.5 uppercase tracking-wide">State</label>
                       <select
                         value={form.state}
-                        onChange={e => update('state', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-body text-tss-blue focus:outline-none focus:border-tss-peach/50 transition-colors appearance-none cursor-pointer"
+                        onChange={e => { update('state', e.target.value); setErrors(p => ({ ...p, state: '' })) }}
+                        className={clsx('w-full px-4 py-3 border rounded-xl text-sm font-body text-tss-blue focus:outline-none transition-colors appearance-none cursor-pointer', errors.state ? 'border-red-400' : 'border-gray-200 focus:border-tss-peach/50')}
                       >
                         <option value="">Select State</option>
                         {['Maharashtra', 'Delhi', 'Karnataka', 'Tamil Nadu', 'Gujarat', 'Rajasthan', 'West Bengal', 'Uttar Pradesh'].map(s => (
@@ -123,7 +141,7 @@ export default function CheckoutPage() {
                       </select>
                     </div>
                   </div>
-                  <button onClick={() => setStep(1)} className="btn-peach mt-6 text-sm">
+                  <button onClick={() => { if (validateAddress()) setStep(1) }} className="btn-peach mt-6 text-sm">
                     Continue to Delivery <ChevronRight size={15} />
                   </button>
                 </div>
@@ -134,7 +152,7 @@ export default function CheckoutPage() {
                   <h2 className="font-display text-xl font-bold text-tss-blue mb-6">Delivery Method</h2>
                   <div className="space-y-3">
                     {[
-                      { id: 'standard', label: 'Standard Delivery', sub: '5–7 business days', price: subtotal >= 999 ? 'Free' : '₹49' },
+                      { id: 'standard', label: 'Standard Delivery', sub: '5–7 business days', price: subtotal >= 999 ? 'Free' : '₹149' },
                       { id: 'express', label: 'Express Delivery', sub: '2–3 business days', price: '₹149' },
                     ].map(opt => (
                       <button
@@ -211,8 +229,8 @@ export default function CheckoutPage() {
                   <div className="space-y-4 mb-6">
                     {CART_SUMMARY.map(({ product, quantity, size }) => (
                       <div key={product.id} className="flex gap-4 items-center">
-                        <div className="w-14 h-14 rounded-xl overflow-hidden bg-gray-50 shrink-0">
-                          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                        <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-gray-50 shrink-0">
+                          <Image src={product.image} alt={product.name} fill className="object-cover" />
                         </div>
                         <div className="flex-1">
                           <div className="font-body text-sm font-semibold text-tss-blue">{product.name}</div>
@@ -248,8 +266,8 @@ export default function CheckoutPage() {
                 <div className="space-y-3 mb-4">
                   {CART_SUMMARY.map(({ product, quantity }) => (
                     <div key={product.id} className="flex gap-3">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-50 shrink-0">
-                        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gray-50 shrink-0">
+                        <Image src={product.image} alt={product.name} fill className="object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs font-body font-medium text-tss-blue line-clamp-1">{product.name}</div>

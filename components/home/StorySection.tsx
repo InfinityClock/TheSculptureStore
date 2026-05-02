@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, UserCircle2, Box } from 'lucide-react'
 
 export default function StorySection() {
@@ -31,9 +32,9 @@ export default function StorySection() {
           </div>
           <div className="flex items-center gap-3">
             <div className="flex -space-x-2.5">
-              <img src="/images/products/ganesha-dashboard.png" alt="" className="w-9 h-9 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
-              <img src="/images/products/apj-kalam-monument.png" alt="" className="w-9 h-9 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
-              <img src="/images/products/shiva-nataraja.png" alt="" className="w-9 h-9 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
+              <div className="relative w-9 h-9 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/ganesha-dashboard.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-9 h-9 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/apj-kalam-monument.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-9 h-9 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/shiva-nataraja.png" alt="" fill className="object-cover" /></div>
             </div>
             <div>
               <p className="text-white font-bold font-body text-sm leading-tight">10,000+ Masterpieces Crafted</p>
@@ -44,10 +45,11 @@ export default function StorySection() {
 
         {/* Founder photo — mobile */}
         <div className="relative w-full rounded-2xl overflow-hidden" style={{ height: '340px' }}>
-          <img
+          <Image
             src="/images/founder.jpeg"
             alt="Founder Jagadesh Koteesvaran"
-            className="w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
           />
           <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0D1E2E] to-transparent" />
           <div className="absolute bottom-4 left-4">
@@ -82,9 +84,9 @@ export default function StorySection() {
           </div>
           <div className="flex items-center gap-4">
             <div className="flex -space-x-3">
-              <img src="/images/products/ganesha-dashboard.png" alt="" className="w-10 h-10 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
-              <img src="/images/products/apj-kalam-monument.png" alt="" className="w-10 h-10 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
-              <img src="/images/products/shiva-nataraja.png" alt="" className="w-10 h-10 rounded-full border-2 border-[#0D1E2E] object-cover bg-white" />
+              <div className="relative w-10 h-10 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/ganesha-dashboard.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-10 h-10 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/apj-kalam-monument.png" alt="" fill className="object-cover" /></div>
+              <div className="relative w-10 h-10 rounded-full border-2 border-[#0D1E2E] overflow-hidden bg-white"><Image src="/images/products/shiva-nataraja.png" alt="" fill className="object-cover" /></div>
             </div>
             <div>
               <p className="text-white font-bold font-body text-sm leading-tight">10,000+ Masterpieces Crafted</p>
@@ -95,10 +97,11 @@ export default function StorySection() {
 
         {/* Right — full-bleed founder image */}
         <div className="relative overflow-hidden">
-          <img
+          <Image
             src="/images/founder.jpeg"
             alt="Founder Jagadesh Koteesvaran"
-            className="absolute inset-0 w-full h-full object-cover object-top"
+            fill
+            className="object-cover object-top"
           />
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0D1E2E] to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-[#0D1E2E]/80 to-transparent" />

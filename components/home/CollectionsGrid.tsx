@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 
 const COLLECTIONS = [
@@ -12,8 +13,8 @@ function CollectionCard({ c, tall, wide }: { c: typeof COLLECTIONS[0]; tall?: bo
   return (
     <Link href={c.href} id={`collection-card-${c.id}`}
       className={`group relative block rounded-3xl overflow-hidden img-zoom ${tall ? 'h-[580px] lg:h-full' : wide ? 'h-52 lg:h-64' : 'h-64 lg:h-[280px]'}`}>
-      <img src={c.image} alt={c.label}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+      <Image src={c.image} alt={c.label} fill
+        className="object-cover transition-transform duration-700 group-hover:scale-110" />
       <div className="absolute inset-0 bg-gradient-to-t from-tss-blue-deep via-tss-blue/25 to-transparent" />
       <div className="absolute inset-0 border-2 border-transparent group-hover:border-tss-peach/45 rounded-3xl transition-all duration-500" />
       <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">

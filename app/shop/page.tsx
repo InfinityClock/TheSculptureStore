@@ -1,7 +1,9 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Search, X, Star, ShoppingCart, Heart, ChevronDown, Filter } from 'lucide-react'
 import { PRODUCTS, type Product, type Category } from '@/lib/data'
 import { clsx } from 'clsx'
@@ -34,7 +36,7 @@ function ShopProductCard({ product }: { product: Product }) {
   return (
     <div className="product-card group flex flex-col bg-white">
       <div className="relative img-zoom-wrap overflow-hidden aspect-square bg-gray-50 rounded-t-2xl">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+        <Image src={product.image} alt={product.name} fill className="object-cover" />
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.badge && (
             <span className="bg-tss-peach text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide font-body">
@@ -102,12 +104,21 @@ function ShopProductCard({ product }: { product: Product }) {
   )
 }
 
-export default function ShopPage() {
+function ShopContent() {
+  const searchParams = useSearchParams()
+  const urlCategory = searchParams.get('category') as Category | null
+  const urlSort = searchParams.get('sort')
+
   const [search, setSearch] = useState('')
-  const [category, setCategory] = useState<Category | 'all'>('all')
-  const [sort, setSort] = useState('featured')
+  const [category, setCategory] = useState<Category | 'all'>(urlCategory ?? 'all')
+  const [sort, setSort] = useState(urlSort ?? 'featured')
   const [priceRange, setPriceRange] = useState([0, 10000])
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  useEffect(() => {
+    if (urlCategory) setCategory(urlCategory)
+    if (urlSort) setSort(urlSort)
+  }, [urlCategory, urlSort])
 
   const filtered = useMemo(() => {
     let products = [...PRODUCTS]
@@ -118,7 +129,7 @@ export default function ShopPage() {
       case 'price-asc': products.sort((a, b) => a.price - b.price); break
       case 'price-desc': products.sort((a, b) => b.price - a.price); break
       case 'rating': products.sort((a, b) => b.rating - a.rating); break
-      case 'newest': products.sort((a, b) => b.id.localeCompare(a.id)); break
+      case 'newest': products.sort((a, b) => Number(b.id) - Number(a.id)); break
       default: products.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
     }
     return products
@@ -216,6 +227,18 @@ export default function ShopPage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-tss-peach border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <ShopContent />
+    </Suspense>
   )
 }
 

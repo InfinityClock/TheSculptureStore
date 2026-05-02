@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ShoppingCart, Star, ArrowRight, Heart } from 'lucide-react'
 import { useState } from 'react'
 import { BEST_SELLERS, type Product } from '@/lib/data'
@@ -15,7 +16,7 @@ function ProductCard({ product }: { product: Product }) {
     <div className="product-card group flex flex-col bg-white">
       {/* Image */}
       <div className="relative img-zoom overflow-hidden aspect-[4/5] rounded-t-2xl bg-gray-50">
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+        <Image src={product.image} alt={product.name} fill className="object-cover" />
 
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">

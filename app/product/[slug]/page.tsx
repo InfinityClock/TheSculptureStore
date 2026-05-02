@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { ShoppingCart, Heart, Star, ChevronLeft, ChevronRight, ZoomIn, Truck, Shield, RotateCcw, Share2, Minus, Plus, Check } from 'lucide-react'
+import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import { PRODUCTS, type Product } from '@/lib/data'
 import { clsx } from 'clsx'
 import Navbar from '@/components/layout/Navbar'
@@ -12,7 +14,7 @@ import Footer from '@/components/layout/Footer'
 function ProductGallery({ product }: { product: Product }) {
   const [activeImage, setActiveImage] = useState(0)
   const [zoomed, setZoomed] = useState(false)
-  const images = product.images.length > 1 ? product.images : [product.image, product.image]
+  const images = product.images && product.images.length > 0 ? product.images : [product.image]
 
   return (
     <div className="space-y-3">
@@ -20,10 +22,11 @@ function ProductGallery({ product }: { product: Product }) {
         className="relative rounded-2xl overflow-hidden bg-gray-50 aspect-square cursor-zoom-in"
         onClick={() => setZoomed(!zoomed)}
       >
-        <img
+        <Image
           src={images[activeImage]}
           alt={product.name}
-          className={clsx('w-full h-full object-cover transition-transform duration-500', zoomed ? 'scale-150' : 'scale-100')}
+          fill
+          className={clsx('object-cover transition-transform duration-500', zoomed ? 'scale-150' : 'scale-100')}
         />
         {product.badge && (
           <div className="absolute top-4 left-4">
@@ -61,11 +64,11 @@ function ProductGallery({ product }: { product: Product }) {
             key={i}
             onClick={() => setActiveImage(i)}
             className={clsx(
-              'w-16 h-16 rounded-xl overflow-hidden border-2 transition-all',
+              'relative w-16 h-16 rounded-xl overflow-hidden border-2 transition-all',
               activeImage === i ? 'border-tss-peach' : 'border-transparent opacity-50 hover:opacity-100'
             )}
           >
-            <img src={img} alt={`View ${i + 1}`} className="w-full h-full object-cover" />
+            <Image src={img} alt={`View ${i + 1}`} fill className="object-cover" />
           </button>
         ))}
       </div>
@@ -223,7 +226,8 @@ function ProductInfo({ product }: { product: Product }) {
 export default function ProductPage() {
   const params = useParams()
   const slug = params?.slug as string
-  const product = PRODUCTS.find(p => p.slug === slug) || PRODUCTS[0]
+  const product = PRODUCTS.find(p => p.slug === slug)
+  if (!product) return notFound()
   const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4)
 
   return (
@@ -289,8 +293,8 @@ export default function ProductPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {related.map(p => (
                   <Link key={p.id} href={`/product/${p.slug}`} className="product-card group block">
-                    <div className="img-zoom-wrap overflow-hidden rounded-t-2xl aspect-square bg-gray-50">
-                      <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                    <div className="relative img-zoom-wrap overflow-hidden rounded-t-2xl aspect-square bg-gray-50">
+                      <Image src={p.image} alt={p.name} fill className="object-cover" />
                     </div>
                     <div className="p-3">
                       <div className="font-display text-sm font-semibold text-tss-blue line-clamp-2 group-hover:text-tss-peach transition-colors">{p.name}</div>

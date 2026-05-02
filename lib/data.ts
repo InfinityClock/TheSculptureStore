@@ -204,7 +204,7 @@ export const PRODUCTS: Product[] = [
     slug: 'gandhi-bust',
     price: 2899,
     originalPrice: 3899,
-    discount: 25,
+    discount: 26,
     rating: 4.8,
     reviews: 89,
     image: '/images/products/gandhi-bust.png',

@@ -209,8 +209,8 @@ export default function AdminPage() {
                         <tr key={p.id} className="border-t border-gray-50 hover:bg-tss-cream/30 transition-colors">
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-xl overflow-hidden bg-gray-50 shrink-0">
-                                <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                              <div className="relative w-10 h-10 rounded-xl overflow-hidden bg-gray-50 shrink-0">
+                                <Image src={p.image} alt={p.name} fill className="object-cover" />
                               </div>
                               <div className="font-body text-sm font-medium text-tss-blue line-clamp-1 max-w-[180px]">{p.name}</div>
                             </div>

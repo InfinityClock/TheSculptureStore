@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <Image
-              src={scrolled ? '/logo/logo-blue.png' : '/logo/logo-blue.png'}
+              src="/logo/logo-blue.png"
               alt="The Sculpture Store"
               width={150}
               height={44}
@@ -208,6 +208,9 @@ export default function Navbar() {
           </nav>
 
           <div className="px-6 mt-4 flex flex-col gap-3">
+            <Link href="/cart" onClick={() => setMobileOpen(false)} className="btn-blue-outline justify-center">
+              View Cart
+            </Link>
             <Link href="/shop" onClick={() => setMobileOpen(false)} className="btn-peach justify-center">
               Order Now
             </Link>
@@ -224,7 +227,7 @@ export default function Navbar() {
 
           <div className="mt-auto px-6 pb-8 pt-6 text-sm text-gray-400 font-body space-y-1">
             <p>📍 Vanagaram, Chennai, TN 600077</p>
-            <p>📞 +91 79000 60025 · 🚚 Ships to 50+ countries</p>
+            <p>📞 +91 79000 60026 · 🚚 Ships to 50+ countries</p>
           </div>
         </div>
       )}

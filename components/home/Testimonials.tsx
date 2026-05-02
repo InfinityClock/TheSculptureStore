@@ -83,7 +83,7 @@ export default function Testimonials() {
                   <div className="text-[10px] font-semibold text-tss-blue font-body truncate">{t.name.split(' ')[0]}</div>
                 </div>
                 <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, s) => <Star key={s} size={8} className="fill-tss-peach text-tss-peach" />)}
+                  {[...Array(5)].map((_, s) => <Star key={s} size={8} className={s < t.rating ? 'fill-tss-peach text-tss-peach' : 'fill-gray-300 text-gray-300'} />)}
                 </div>
               </button>
             ))}

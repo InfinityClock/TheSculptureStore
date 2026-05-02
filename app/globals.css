@@ -238,12 +238,9 @@ h1, h2, h3, h4, h5 {
   }
 
   /* ── Image zoom wrapper ── */
-  .img-zoom { overflow: hidden; }
-  .img-zoom img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-  .img-zoom:hover img { transform: scale(1.06); }
-  .img-zoom-wrap { overflow: hidden; }
-  .img-zoom-wrap img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-  .img-zoom-wrap:hover img { transform: scale(1.06); }
+  .img-zoom, .img-zoom-wrap { overflow: hidden; }
+  .img-zoom img, .img-zoom-wrap img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .img-zoom:hover img, .img-zoom-wrap:hover img { transform: scale(1.06); }
 
   /* ── Admin sidebar ── */
   .admin-sidebar { background: var(--tss-blue-deep); }

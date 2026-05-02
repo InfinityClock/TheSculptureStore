@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Package, Heart, User, Settings, LogOut, ChevronRight, Truck, Check, Clock } from 'lucide-react'
 import { PRODUCTS } from '@/lib/data'
 import Navbar from '@/components/layout/Navbar'
@@ -126,8 +127,8 @@ export default function AccountPage() {
                           <div className="px-5 py-4 space-y-3">
                             {order.items.map(({ product, quantity, size }) => (
                               <div key={product.id} className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-50 shrink-0">
-                                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                                <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-gray-50 shrink-0">
+                                  <Image src={product.image} alt={product.name} fill className="object-cover" />
                                 </div>
                                 <div className="flex-1">
                                   <div className="font-body text-sm font-medium text-tss-blue">{product.name}</div>
